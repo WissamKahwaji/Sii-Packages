@@ -1,4 +1,3 @@
-import React from "react";
 import { IdParams } from "./type";
 import { useParams } from "react-router-dom";
 import { useGetCategoryPackagesQuery } from "../../apis/packages/queries";

@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { useGetCategoriesQuery } from "../../apis/packages/queries";
 import { Link } from "react-router-dom";

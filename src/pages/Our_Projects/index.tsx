@@ -1,4 +1,3 @@
-import React from "react";
 import { useGetCategoriesQuery } from "../../apis/packages/queries";
 import { SampleInfo } from "../../apis/packages/type";
 import ReactImageGallery from "react-image-gallery";

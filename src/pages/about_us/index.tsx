@@ -33,6 +33,9 @@ const AboutUs = () => {
           ourVision={aboutData?.ourVision ?? ""}
           ourMission={aboutData?.ourMission ?? ""}
           ourValues={aboutData?.ourValues ?? ""}
+          ourMission_ar={aboutData?.ourMission_ar ?? ""}
+          ourValues_ar={aboutData?.ourValues_ar ?? ""}
+          ourVision_ar={aboutData?.ourVision_ar ?? ""}
         />
       </div>
       <ContactSection />
