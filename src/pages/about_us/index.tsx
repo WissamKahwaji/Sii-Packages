@@ -4,8 +4,7 @@ import AboutItem from "../../components/about-us/AboutItem";
 import ContactSection from "../../components/home/ContactSection";
 
 const AboutUs = () => {
-  const { t, i18n } = useTranslation();
-  const selectedLang = i18n.language;
+  const { t } = useTranslation();
   const { data: aboutData, isLoading, isError } = useGetAboutQuery();
 
   if (isLoading) return <div></div>;
