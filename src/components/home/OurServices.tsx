@@ -30,7 +30,7 @@ const OurServices = () => {
             )}
           </>
         </div>
-        <p className="text-lg text-secondary font-body leading-7 max-w-[700px] mx-auto text-start">
+        <p className="  text-secondary font-body leading-7 max-w-[700px]   text-start  text-sm md:text-lg mx-5 md:mx-auto">
           {t("services_desc")}
         </p>
       </div>

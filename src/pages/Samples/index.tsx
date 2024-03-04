@@ -5,8 +5,10 @@ import { SampleInfo, Samples } from "../../apis/packages/type";
 import ReactImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ContactSection from "../../components/home/ContactSection";
+import { useTranslation } from "react-i18next";
 
 const SamplesPage = () => {
+  const { t } = useTranslation();
   const { id } = useParams<IdParams>();
   const {
     data: category,
@@ -26,12 +28,15 @@ const SamplesPage = () => {
       {category?.samples.length === 0 ? (
         <div className="flex justify-center items-center my-5">
           <p className="text-center max-w-md mx-auto p-4 bg-yellow-100 text-yellow-800 rounded-md shadow-lg">
-            There is not any samples yet
+            {t("There is not any samples yet")}
           </p>
         </div>
       ) : (
-        <div className="flex flex-col gap-8 py-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {category?.name_en === "Websites Packages" ? (
+        <div
+          style={{ direction: "ltr" }}
+          className=" flex flex-col gap-8 py-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+        >
+          {category?.name_en === "Websites & Online shops" ? (
             <>
               {category?.samples.map((sample: Samples, index: number) => (
                 <div key={index}>

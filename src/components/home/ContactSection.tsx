@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import {
-  FaFacebookSquare,
-  FaInstagramSquare,
-  FaWhatsappSquare,
-  FaLinkedin,
-  FaPhone,
-  FaSnapchatSquare,
-  FaTiktok,
-  FaTwitterSquare,
-} from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
-import { Link } from "react-router-dom";
+// import {
+//   FaFacebookSquare,
+//   FaInstagramSquare,
+//   FaWhatsappSquare,
+//   FaLinkedin,
+//   FaPhone,
+//   FaSnapchatSquare,
+//   FaTiktok,
+//   FaTwitterSquare,
+// } from "react-icons/fa";
+// import { MdEmail } from "react-icons/md";
+// import { Link } from "react-router-dom";
 import baseUrl from "../../constants/domain";
 import { useTranslation } from "react-i18next";
 
@@ -86,8 +86,8 @@ const ContactSection = () => {
             {t("get_in_touch_subtitle")}
           </p>
         </div>
-        <div className="grid grid-flow-row md:grid-cols-2 mx-4 md:mx-20 my-10">
-          <div className="flex flex-col gap-8 bg-gray-background md:px-4">
+        <div className="mx-auto md:mx-auto my-10 w-[90%] md:w-1/2">
+          {/* <div className="flex flex-col gap-8 bg-gray-background md:px-4">
             <div>
               <p className="mb-6 text-2xl font-semibold font-header capitalize text-primary">
                 {t("location")}
@@ -191,7 +191,7 @@ const ContactSection = () => {
               </ul>
               <ul className="flex gap-2"></ul>
             </div>
-          </div>
+          </div> */}
           <div className="border border-primary mt-4 md:mt-0 p-4 md:p-6 lg:p-8 rounded-lg">
             <h2 className="text-3xl font-semibold mb-4 font-header text-secondary">
               {t("contact_us")}

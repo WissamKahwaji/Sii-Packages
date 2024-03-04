@@ -25,5 +25,16 @@
     "your_mobile_number":"رقم الهاتف",
     "company_name":"اسم الشركة",
     "your_message":"رسالتك",
-    "send_message":"ارسال الرسالة"
+    "send_message":"ارسال الرسالة",
+    "packages":"الخدمات",
+    "send":"ارسال",
+    "© 2024 Sii Media. All rights reserved.":"سي ميديا. كل الحقوق محفوظة.",
+    "choose_package_sent":"اختر خطة ميسورة التكلفة ومليئة بأفضل الميزات لجذب جمهورك، وخلق ولاء العملاء، وزيادة المبيعات.",
+    "no_packages" : "لا يوجد باقات حتى الآن.",
+    "show_samples":"عرض المشاريع" ,
+    "AED":"د.إ",
+    "Cancel":"إلغاء",
+    "submit":"تاكيد",
+    "There is not any samples yet":"لا يوجد أي عينات حتى الآن"
+
 }

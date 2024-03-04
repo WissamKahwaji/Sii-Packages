@@ -7,7 +7,10 @@ import { formatPrice } from "../../utils";
 import ContactSection from "../../components/home/ContactSection";
 import { IdParams } from "./type";
 import baseUrl from "../../constants/domain";
+import { useTranslation } from "react-i18next";
 const Pricing: React.FC = () => {
+  const { t, i18n } = useTranslation();
+  const selectedLang = i18n.language;
   const { id } = useParams<IdParams>();
 
   const [showModal, setShowModal] = useState<number | null>(null);
@@ -114,17 +117,16 @@ const Pricing: React.FC = () => {
     <div className="relative w-full bg-gray-100 pt-8">
       <div className="text-center mb-8">
         <h2 className="text-3xl sm:text-4xl font-semibold font-header mb-5 text-primary">
-          {category?.name_en}
+          {selectedLang === "en" ? category?.name_en : category?.name_ar}
         </h2>
         <p className="text-lg text-secondary font-body leading-7 max-w-[700px] mx-auto">
-          Choose an affordable plan that's packed with the best features for
-          engaging your audience, creating customer loyalty, and driving sales.
+          {t("choose_package_sent")}
         </p>
       </div>
       {category?.packages.length === 0 ? (
         <div className="flex justify-center items-center my-5">
           <p className="text-center max-w-md mx-auto p-4 bg-yellow-100 text-yellow-800 rounded-md shadow-lg">
-            There is not any packages yet
+            {t("no_packages")}
           </p>
         </div>
       ) : (
@@ -136,7 +138,7 @@ const Pricing: React.FC = () => {
             responsive={RESPONSIVE}
             infinite
             autoPlay
-            className="md:mx-10 md:my-5 py-10"
+            className="md:mx-10 md:my-5 py-10 mx-3"
           >
             {category?.packages.map((item, index) => (
               <div
@@ -145,7 +147,7 @@ const Pricing: React.FC = () => {
               >
                 <div className="p-8">
                   <h3 className="text-2xl h-[30px] text-center font-semibold font-header text-secondary  mb-7">
-                    {item.title_en}
+                    {selectedLang === "en" ? item.title_en : item.title_ar}
                   </h3>
                   <button
                     onClick={() => setShowModal(index)}
@@ -155,30 +157,58 @@ const Pricing: React.FC = () => {
                       <span className="ml-3 text-3xl font-bold font-body text-primary">
                         {formatPrice(item.price)}
                       </span>{" "}
-                      <span className="text-secondary">AED</span>
+                      <span className="text-secondary">{t("AED")}</span>
                     </p>
                   </button>
                   <ul className="mt-6 space-y-4">
                     {item.features &&
-                      item.features.map((feature, index) => (
-                        <li
-                          key={index}
-                          className="flex items-center text-sm leading-6 text-gray-700"
-                        >
-                          <svg
-                            viewBox="0 0 665.8 1000"
-                            fill="currentColor"
-                            height="1em"
-                            width="1em"
-                            className="shrink-0 h-5 w-5 fill-current text-green-500"
-                          >
-                            <path d="M248 850c-22.667 0-41.333-9.333-56-28L12 586C1.333 570-2.667 552.667 0 534s11.333-34 26-46 31.667-16.667 51-14c19.333 2.667 35 12 47 28l118 154 296-474c10.667-16 25-26 43-30s35.667-1.333 53 8c16 10.667 26 25 30 43s1.333 35.667-8 53L306 816c-13.333 21.333-32 32-56 32l-2 2" />
-                          </svg>
-                          <span className="ml-3 font-body text-gray-800">
-                            {feature.title_en}
-                          </span>
-                        </li>
-                      ))}
+                      item.features.map((feature, index) =>
+                        selectedLang === "en" ? (
+                          <>
+                            <li
+                              key={index}
+                              className="flex flex-row justify-start items-center text-sm leading-6 text-gray-700"
+                            >
+                              <svg
+                                viewBox="0 0 665.8 1000"
+                                fill="currentColor"
+                                height="1em"
+                                width="1em"
+                                className="shrink-0 h-5 w-5 fill-current text-green-500"
+                              >
+                                <path d="M248 850c-22.667 0-41.333-9.333-56-28L12 586C1.333 570-2.667 552.667 0 534s11.333-34 26-46 31.667-16.667 51-14c19.333 2.667 35 12 47 28l118 154 296-474c10.667-16 25-26 43-30s35.667-1.333 53 8c16 10.667 26 25 30 43s1.333 35.667-8 53L306 816c-13.333 21.333-32 32-56 32l-2 2" />
+                              </svg>
+                              <span className="ml-3 font-body text-gray-800">
+                                {selectedLang === "en"
+                                  ? feature.title_en
+                                  : feature.tital_ar}
+                              </span>
+                            </li>
+                          </>
+                        ) : (
+                          <>
+                            <li
+                              key={index}
+                              className="flex flex-row justify-end items-center text-sm leading-6 text-gray-700"
+                            >
+                              <span className="ml-3 font-body text-gray-800">
+                                {selectedLang === "en"
+                                  ? feature.title_en
+                                  : feature.tital_ar}
+                              </span>
+                              <svg
+                                viewBox="0 0 665.8 1000"
+                                fill="currentColor"
+                                height="1em"
+                                width="1em"
+                                className="shrink-0 h-5 w-5 fill-current text-green-500"
+                              >
+                                <path d="M248 850c-22.667 0-41.333-9.333-56-28L12 586C1.333 570-2.667 552.667 0 534s11.333-34 26-46 31.667-16.667 51-14c19.333 2.667 35 12 47 28l118 154 296-474c10.667-16 25-26 43-30s35.667-1.333 53 8c16 10.667 26 25 30 43s1.333 35.667-8 53L306 816c-13.333 21.333-32 32-56 32l-2 2" />
+                              </svg>
+                            </li>
+                          </>
+                        )
+                      )}
                   </ul>
                 </div>
               </div>
@@ -190,19 +220,21 @@ const Pricing: React.FC = () => {
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
           <div className="bg-white rounded-lg p-8 w-96 mt-20">
             <h2 className="text-lg font-semibold mb-4 font-header text-secondary">
-              {category?.packages[showModal]?.title_en}
+              {selectedLang === "en"
+                ? category?.packages[showModal]?.title_en
+                : category?.packages[showModal]?.title_ar}
             </h2>
             <h2 className="text-lg font-semibold mb-4 font-header text-primary">
-              {category?.packages[showModal]?.price} <span>AED</span>
+              {category?.packages[showModal]?.price} <span>{t("AED")}</span>
             </h2>
             <form onSubmit={handleSubmit}>
-              <div className="flex space-x-2">
-                <div className="mb-4">
+              <div className="flex ">
+                <div className="mb-4 mx-2">
                   <label
                     htmlFor="firstName"
                     className="block text-gray-700 font-semibold"
                   >
-                    First Name
+                    {t("first_name")}
                   </label>
                   <input
                     type="text"
@@ -219,7 +251,7 @@ const Pricing: React.FC = () => {
                     htmlFor="lastName"
                     className="block text-gray-700 font-semibold"
                   >
-                    Last Name
+                    {t("last_name")}
                   </label>
                   <input
                     type="text"
@@ -237,7 +269,7 @@ const Pricing: React.FC = () => {
                   htmlFor="companyName"
                   className="block text-gray-700 font-semibold"
                 >
-                  Company Name
+                  {t("company_name")}
                 </label>
                 <input
                   type="text"
@@ -253,7 +285,7 @@ const Pricing: React.FC = () => {
                   htmlFor="name"
                   className="block text-gray-700 font-semibold"
                 >
-                  Email
+                  {t("your_email")}
                 </label>
                 <input
                   type="email"
@@ -270,7 +302,7 @@ const Pricing: React.FC = () => {
                   htmlFor="name"
                   className="block text-gray-700 font-semibold"
                 >
-                  Mobile Number
+                  {t("your_mobile_number")}
                 </label>
                 <input
                   type="text"
@@ -288,16 +320,16 @@ const Pricing: React.FC = () => {
               <div className="flex justify-end">
                 <button
                   type="button"
-                  className="mr-2 px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400"
+                  className="mx-2 px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400"
                   onClick={() => setShowModal(null)}
                 >
-                  Cancel
+                  {t("Cancel")}
                 </button>
                 <button
                   type="submit"
                   className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark"
                 >
-                  Submit
+                  {t("submit")}
                 </button>
               </div>
             </form>
@@ -309,7 +341,7 @@ const Pricing: React.FC = () => {
           onClick={() => navigate(`samples/${category?._id}`)}
           className="bg-transparent shadow-lg border border-secondary font-header font-bold w-3/4 md:w-3/6 text-gray-900 py-4 px-6 rounded-lg hover:border-primary transform transition-transform hover:scale-105 duration-300 delay-100 hover:animate-pulse"
         >
-          Show Samples
+          {t("show_samples")}
         </button>
       </div>
       <ContactSection />

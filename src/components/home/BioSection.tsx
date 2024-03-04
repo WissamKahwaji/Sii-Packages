@@ -18,7 +18,7 @@ const BioSection: React.FC<BioSectionProps> = ({ scrollToContact }) => {
           <h1 className="capitalize text-primary font-semibold font-header text-4xl drop-shadow-lg mb-3 ">
             Sii advertising & media
           </h1>
-          <p className="text-secondary font-body text-start ">
+          <p className="text-secondary font-body text-start text-sm md:text-base mx-1 md:mx-0">
             {t("bio_sentence")}
           </p>
           <div className="flex gap-4 lg:gap-4 mt-6 justify-center md:justify-start">

@@ -27,5 +27,15 @@
     "your_mobile_number":"Your Mobile Number",
     "company_name":"Company Name",
     "your_message":"Your Message",
-    "send_message":"Send Message"
+    "send_message":"Send Message",
+    "packages":"Packages",
+    "send":"Send",
+    "© 2024 Sii Media. All rights reserved.":"Sii Media. All rights reserved.",
+    "choose_package_sent":"Choose an affordable plan that's packed with the best features for engaging your audience, creating customer loyalty, and driving sales.",
+    "no_packages" : "There is not any packages yet",
+    "show_samples":"Show Samples",
+    "AED":"AED",
+    "Cancel":"Cancel",
+    "submit":"Submit",
+    "There is not any samples yet":"There is not any samples yet"
 }
