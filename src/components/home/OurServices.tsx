@@ -2,10 +2,26 @@ import { motion } from "framer-motion";
 import { useGetCategoriesQuery } from "../../apis/packages/queries";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 const OurServices = () => {
   const { t, i18n } = useTranslation();
   const selectedLang = i18n.language;
+  const [expandedDescriptions, setExpandedDescriptions] = useState<{
+    [key: string]: boolean;
+  }>({});
+
+  const toggleBrief = (
+    categoryId: string,
+    event: React.MouseEvent<HTMLSpanElement>
+  ) => {
+    event.stopPropagation();
+    event.preventDefault();
+    setExpandedDescriptions(prevState => ({
+      ...prevState,
+      [categoryId]: !prevState[categoryId],
+    }));
+  };
   const { data: categories, isLoading, isError } = useGetCategoriesQuery();
   if (isLoading) return <div></div>;
   if (isError) return <div></div>;
@@ -30,7 +46,7 @@ const OurServices = () => {
             )}
           </>
         </div>
-        <p className="  text-secondary font-body leading-7 max-w-[700px]   text-start  text-sm md:text-lg mx-5 md:mx-auto">
+        <p className="hidden md:flex  text-secondary font-body leading-7 max-w-[700px]   text-start  text-sm md:text-lg mx-5 md:mx-auto">
           {t("services_desc")}
         </p>
       </div>
@@ -40,36 +56,57 @@ const OurServices = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-3"
+          className="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-y-3"
         >
           {categories &&
             categories.map((category, index) => (
-              <Link to={`pricing/${category._id}`}>
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="max-w-md rounded h-full overflow-hidden bg-transparent border-2 border-secondary hover:border-primary shadow-lg  mx-4 mb-8 hover:shadow-xl transform transition duration-300 hover:-translate-y-1 cursor-pointer"
-                >
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="max-w-md rounded h-auto overflow-hidden bg-transparent border-2 border-secondary hover:border-primary shadow-lg  mx-4 mb-4 md:mb-8 hover:shadow-xl transform transition duration-300 hover:-translate-y-1 cursor-pointer"
+              >
+                <Link to={`pricing/${category._id}`}>
                   <div className="flex flex-col items-center justify-start p-3 h-full w-full">
-                    <div className="font-bold font-header flex  text-gray-900 text-xl mb-5">
+                    <div className="font-bold font-header flex  text-gray-900 text-base md:text-xl mb-5">
                       {selectedLang === "en"
                         ? category.name_en
                         : category.name_ar}
                     </div>
-                    <p className="text-gray-700 text-base">
+                    <div className="text-gray-600 whitespace-pre-wrap text-start font-serif text-sm">
+                      {expandedDescriptions[category._id!] ||
+                      !category.description_en
+                        ? selectedLang === "en"
+                          ? category.description_en
+                          : category.description_ar
+                        : selectedLang === "en"
+                        ? category.description_en.slice(0, 85)
+                        : category.description_ar.slice(0, 85)}
+                      {category.description_en &&
+                        category.description_en.length > 100 && (
+                          <span
+                            className="mx-2 cursor-pointer text-primary"
+                            onClick={event => toggleBrief(category._id!, event)}
+                          >
+                            {expandedDescriptions[category._id!]
+                              ? t("show_less")
+                              : t("show_more")}
+                          </span>
+                        )}
+                    </div>
+                    {/* <p className="text-gray-700 text-base">
                       {selectedLang === "en"
                         ? category.description_en
                         : category.description_ar}
-                    </p>
+                    </p> */}
                   </div>
                   {/* <div className="px-6 py-4">
                   <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
                     {service.icon}
                   </span>
                 </div> */}
-                </motion.div>
-              </Link>
+                </Link>
+              </motion.div>
             ))}
         </motion.div>
       </div>

@@ -17,18 +17,18 @@ const LanguageButton = () => {
   return (
     <div className="relative flex flex-col items-center  rounded-lg">
       <button
-        className="bg-secondary text-xs md:text-sm text-white capitalize px-2 md:px-3 py-1 w-full h-full flex items-center justify-between font-serif  rounded-lg tracking-wider border-transparent active:border-white duration-300 active:text-white"
+        className="bg-secondary text-xs md:text-sm text-white capitalize px-4 py-2 md:px-3 md:py-1  w-full h-full flex items-center justify-between font-serif  rounded-lg tracking-wider border-transparent active:border-white duration-300 active:text-white"
         onClick={() => setIsOpen(prev => !prev)}
       >
         {lang}
         {!isOpen ? (
-          <AiOutlineCaretDown className="h-2" />
+          <AiOutlineCaretDown className="h-3" />
         ) : (
-          <AiOutlineCaretUp className="h-2" />
+          <AiOutlineCaretUp className="h-3" />
         )}
       </button>
       {isOpen && (
-        <div className="bg-secondary absolute text-white w-full top-7 md:top-8 rounded-lg flex flex-col items-center  p-1  ">
+        <div className="bg-secondary absolute text-white w-full top-9 md:top-8 rounded-lg flex flex-col items-center  p-1  ">
           {langList.map((lang, index) => (
             <div
               key={index}
@@ -39,7 +39,7 @@ const LanguageButton = () => {
                 setIsOpen(prev => !prev);
               }}
             >
-              <h3 className="capitalize font-header text-xs md:text-base ">
+              <h3 className="capitalize my-1 font-body text-sm md:text-base ">
                 {lang}
               </h3>
             </div>

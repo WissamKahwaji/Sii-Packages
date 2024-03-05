@@ -70,7 +70,7 @@ const OurProjects = () => {
             )}
           </>
         </div>
-        <p className="text-lg text-secondary font-body leading-7 max-w-[700px] mx-auto text-start">
+        <p className=" md:text-lg text-secondary font-body leading-7 max-w-[700px] mx-4 md:mx-auto text-start">
           {t("services_desc")}
         </p>
       </div>
@@ -114,6 +114,57 @@ const OurProjects = () => {
                             </span>
                           </div>
                         )}
+                      </div>
+                    ))}
+                  </Carousel>
+                ) : categoryName === "Application developing & programming" ? (
+                  <Carousel
+                    responsive={RESPONSIVE}
+                    infinite
+                    autoPlay
+                    className=""
+                  >
+                    {samples.map((item: SampleInfo, idx: number) => (
+                      <div
+                        key={idx}
+                        className="relative overflow-hidden object-fill rounded-md border border-primary hover:shadow-lg md:mx-2 h-[300px] md:h-[400px]"
+                      >
+                        <img
+                          src={item.img}
+                          alt={item.link}
+                          className="w-full h-full object-cover transition-transform transform hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-black opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
+                          <div className="flex flex-col items-start space-y-10">
+                            <span
+                              className="text-white text-lg font-semibold font-header  cursor-pointer"
+                              onClick={() => {
+                                if (item.link) {
+                                  window.open(item.link, "_blank");
+                                }
+                              }}
+                            >
+                              google play
+                            </span>
+                            <span
+                              className="text-white text-lg font-semibold font-header  cursor-pointer"
+                              onClick={() => {
+                                if (item.secondLink) {
+                                  window.open(item.link, "_blank");
+                                }
+                              }}
+                            >
+                              app store
+                            </span>
+                          </div>
+                        </div>
+                        {/* {item.link && (
+                          <div className="absolute inset-0 bg-black opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
+                            <span className="text-white text-lg font-semibold">
+                              Visit Website
+                            </span>
+                          </div>
+                        )} */}
                       </div>
                     ))}
                   </Carousel>

@@ -35,6 +35,11 @@
     "AED":"د.إ",
     "Cancel":"إلغاء",
     "submit":"تاكيد",
-    "There is not any samples yet":"لا يوجد أي عينات حتى الآن"
+    "There is not any samples yet":"لا يوجد أي عينات حتى الآن",
+    "our_clients":"عملاؤنا",
+    "show_more":"اقرأ المزيد",
+    "show_less":"اقرأ أقل",
+    "location_map":"موقعنا",
+    "location_det":"الإمارات العربية المتحدة - دبي - بزنس باي - برج أوبال - مكتب 1608"
 
 }

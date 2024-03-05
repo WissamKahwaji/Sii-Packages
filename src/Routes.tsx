@@ -12,6 +12,8 @@ import Pricing from "./pages/Pricing/Pricing";
 import SamplesPage from "./pages/Samples";
 import OurProjects from "./pages/Our_Projects";
 import AboutUs from "./pages/about_us";
+import OurPackages from "./pages/packages";
+import ContactUs from "./pages/contact_us";
 
 const Routes = () => {
   const router = createBrowserRouter(
@@ -21,7 +23,14 @@ const Routes = () => {
         <Route path="pricing/:id" element={<Pricing />} />
         <Route path="pricing/:id/samples/:id" element={<SamplesPage />} />
         <Route path="our-projects" element={<OurProjects />} />
+        <Route path="packages" element={<OurPackages />} />
+        <Route path="packages/pricing/:id" element={<Pricing />} />
+        <Route
+          path="packages/pricing/:id/samples/:id"
+          element={<SamplesPage />}
+        />
         <Route path="about-us" element={<AboutUs />} />
+        <Route path="contact-us" element={<ContactUs />} />
       </Route>
     )
   );

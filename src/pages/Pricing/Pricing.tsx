@@ -115,11 +115,11 @@ const Pricing: React.FC = () => {
 
   return (
     <div className="relative w-full bg-gray-100 pt-8">
-      <div className="text-center mb-8">
+      <div className="text-center mb-4 md:mb-8 mx-5 md:mx-0">
         <h2 className="text-3xl sm:text-4xl font-semibold font-header mb-5 text-primary">
           {selectedLang === "en" ? category?.name_en : category?.name_ar}
         </h2>
-        <p className="text-lg text-secondary font-body leading-7 max-w-[700px] mx-auto">
+        <p className="text-base md:text-lg text-secondary font-body leading-7 max-w-[700px] mx-auto">
           {t("choose_package_sent")}
         </p>
       </div>
@@ -178,7 +178,7 @@ const Pricing: React.FC = () => {
                               >
                                 <path d="M248 850c-22.667 0-41.333-9.333-56-28L12 586C1.333 570-2.667 552.667 0 534s11.333-34 26-46 31.667-16.667 51-14c19.333 2.667 35 12 47 28l118 154 296-474c10.667-16 25-26 43-30s35.667-1.333 53 8c16 10.667 26 25 30 43s1.333 35.667-8 53L306 816c-13.333 21.333-32 32-56 32l-2 2" />
                               </svg>
-                              <span className="ml-3 font-body text-gray-800">
+                              <span className=" ml-3 font-body text-gray-800">
                                 {selectedLang === "en"
                                   ? feature.title_en
                                   : feature.tital_ar}
@@ -189,9 +189,9 @@ const Pricing: React.FC = () => {
                           <>
                             <li
                               key={index}
-                              className="flex flex-row justify-end items-center text-sm leading-6 text-gray-700"
+                              className="flex flex-row justify-end  items-center text-sm leading-6 text-gray-700"
                             >
-                              <span className="ml-3 font-body text-gray-800">
+                              <span className="text-xs md:text-base ml-3 font-body text-gray-800">
                                 {selectedLang === "en"
                                   ? feature.title_en
                                   : feature.tital_ar}

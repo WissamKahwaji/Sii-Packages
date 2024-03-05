@@ -30,4 +30,5 @@ export type Samples = {
 export type SampleInfo = {
   img: string;
   link: string;
+  secondLink: string;
 };

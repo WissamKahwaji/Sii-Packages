@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-// import {
-//   FaFacebookSquare,
-//   FaInstagramSquare,
-//   FaWhatsappSquare,
-//   FaLinkedin,
-//   FaPhone,
-//   FaSnapchatSquare,
-//   FaTiktok,
-//   FaTwitterSquare,
-// } from "react-icons/fa";
-// import { MdEmail } from "react-icons/md";
-// import { Link } from "react-router-dom";
 import baseUrl from "../../constants/domain";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import {
+  FaFacebookSquare,
+  FaInstagramSquare,
+  FaLinkedin,
+  FaPhone,
+  FaSnapchatSquare,
+  FaTiktok,
+  FaTwitterSquare,
+  FaWhatsappSquare,
+} from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
-const ContactSection = () => {
+const ContactUs = () => {
   const { t } = useTranslation();
 
   const [formData, setFormData] = useState({
@@ -86,8 +86,8 @@ const ContactSection = () => {
             {t("get_in_touch_subtitle")}
           </p>
         </div>
-        <div className="mx-auto md:mx-auto my-5 md:my-10 w-[90%] md:w-1/2">
-          {/* <div className="flex flex-col gap-8 bg-gray-background md:px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 mx-auto md:mx-auto my-10 w-[90%]">
+          <div className="flex flex-col gap-8 bg-gray-background md:px-4">
             <div>
               <p className="mb-6 text-2xl font-semibold font-header capitalize text-primary">
                 {t("location")}
@@ -191,8 +191,8 @@ const ContactSection = () => {
               </ul>
               <ul className="flex gap-2"></ul>
             </div>
-          </div> */}
-          <div className="border border-primary mt-2 md:mt-0 p-4 md:p-6 lg:p-8 rounded-lg">
+          </div>
+          <div className="border border-primary mt-4 md:mt-0 p-4 md:p-6 lg:p-8 rounded-lg">
             <h2 className="text-3xl font-semibold mb-4 font-header text-secondary">
               {t("contact_us")}
             </h2>
@@ -280,9 +280,26 @@ const ContactSection = () => {
             </form>
           </div>
         </div>
+        <div className="  flex flex-col py-10  w-full h-full   text-primary z-1 ">
+          <p className="capitalize font-header text-3xl md:text-5xl text-center my-10">
+            {t("location_map")}
+          </p>
+          <p className="capitalize font-body text-secondary text-base md:text-2xl text-center">
+            {t("location_det")}
+          </p>
+        </div>
+        <div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14441.802897644364!2d55.288398869188605!3d25.188018192405522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6831f6693c85%3A0xb5b269f7897f4978!2zT3BhbCBUb3dlciAtINin2YTYrtmE2YrYrCDYp9mE2KrYrNin2LHZiiAtINiv2KjZig!5e0!3m2!1sar!2sae!4v1709622847553!5m2!1sar!2sae"
+            width="600"
+            height="450"
+            className="w-full"
+            loading="lazy"
+          ></iframe>
+        </div>
       </div>
     </div>
   );
 };
 
-export default ContactSection;
+export default ContactUs;

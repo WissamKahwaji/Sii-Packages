@@ -6,10 +6,37 @@ import ReactImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ContactSection from "../../components/home/ContactSection";
 import { useTranslation } from "react-i18next";
-
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 const SamplesPage = () => {
   const { t } = useTranslation();
   const { id } = useParams<IdParams>();
+  const RESPONSIVE = {
+    xxl: {
+      breakpoint: { max: 5000, min: 1536 },
+      items: 1,
+    },
+    xl: {
+      breakpoint: { max: 1536, min: 1280 },
+      items: 1,
+    },
+    lg: {
+      breakpoint: { max: 1280, min: 1024 },
+      items: 1,
+    },
+    md: {
+      breakpoint: { max: 1024, min: 768 },
+      items: 1,
+    },
+    sm: {
+      breakpoint: { max: 768, min: 640 },
+      items: 1,
+    },
+    xs: {
+      breakpoint: { max: 640, min: 0 },
+      items: 1,
+    },
+  };
   const {
     data: category,
     isLoading,
@@ -68,6 +95,68 @@ const SamplesPage = () => {
                         )}
                       </div>
                     ))}
+                  </div>
+                </div>
+              ))}
+            </>
+          ) : category?.name_en === "Application developing & programming" ? (
+            <>
+              {category.samples.map((sample: Samples, index: number) => (
+                <div key={index}>
+                  <p className="font-header text-2xl text-secondary font-semibold uppercase">
+                    {sample.name}
+                  </p>
+                  <div className="mt-8">
+                    <Carousel
+                      responsive={RESPONSIVE}
+                      infinite
+                      autoPlay
+                      className=""
+                    >
+                      {sample.samples.map((item: SampleInfo, idx: number) => (
+                        <div
+                          key={idx}
+                          className="relative overflow-hidden object-fill rounded-md border border-primary hover:shadow-lg md:mx-2 h-[300px] md:h-[600px]"
+                        >
+                          <img
+                            src={item.img}
+                            alt={item.link}
+                            className="w-full h-full object-cover transition-transform transform hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-black opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
+                            <div className="flex flex-col items-start space-y-10">
+                              <span
+                                className="text-white text-lg font-semibold font-header  cursor-pointer"
+                                onClick={() => {
+                                  if (item.link) {
+                                    window.open(item.link, "_blank");
+                                  }
+                                }}
+                              >
+                                google play
+                              </span>
+                              <span
+                                className="text-white text-lg font-semibold font-header  cursor-pointer"
+                                onClick={() => {
+                                  if (item.secondLink) {
+                                    window.open(item.link, "_blank");
+                                  }
+                                }}
+                              >
+                                app store
+                              </span>
+                            </div>
+                          </div>
+                          {/* {item.link && (
+                            <div className="absolute inset-0 bg-black opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
+                              <span className="text-white text-lg font-semibold">
+                                Visit Website
+                              </span>
+                            </div>
+                          )} */}
+                        </div>
+                      ))}
+                    </Carousel>
                   </div>
                 </div>
               ))}
