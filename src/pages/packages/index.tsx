@@ -1,4 +1,3 @@
-import React from "react";
 import OurServices from "../../components/home/OurServices";
 
 const OurPackages = () => {
