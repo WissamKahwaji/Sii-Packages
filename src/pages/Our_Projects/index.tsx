@@ -5,6 +5,7 @@ import ReactImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { FaAppStoreIos, FaGooglePlay } from "react-icons/fa";
 
 const OurProjects = () => {
   const { data: categories, isLoading, isError } = useGetCategoriesQuery();
@@ -78,14 +79,17 @@ const OurProjects = () => {
         {Object.entries(groupedSamples).map(
           ([categoryName, samples], index) => (
             <div key={index} className="my-5">
-              <p
-                style={{ direction: "ltr" }}
-                className="font-header text-base md:text-2xl text-secondary font-semibold uppercase"
-              >
-                {categoryName}
-              </p>
+              <div className="bg-slate-200 w-fit p-4 rounded-xl shadow-lg mb-3">
+                <p
+                  style={{ direction: "ltr" }}
+                  className="font-header text-sm md:text-2xl text-secondary font-semibold uppercase"
+                >
+                  {categoryName}
+                </p>
+              </div>
               <div className="flex flex-col">
-                {categoryName === "Websites & Online shops" ? (
+                {categoryName === "Websites & Online shops" ||
+                categoryName === "Photography and videography" ? (
                   <Carousel
                     responsive={RESPONSIVE}
                     infinite
@@ -95,7 +99,7 @@ const OurProjects = () => {
                     {samples.map((item: SampleInfo, idx: number) => (
                       <div
                         key={idx}
-                        className="relative overflow-hidden object-fill rounded-md border border-primary hover:shadow-lg cursor-pointer md:mx-2 h-[300px] md:h-[400px]"
+                        className="relative overflow-hidden object-fill rounded-md border border-primary hover:shadow-lg cursor-pointer md:mx-2 h-[240px] md:h-[370px]"
                         onClick={() => {
                           if (item.link) {
                             window.open(item.link, "_blank");
@@ -105,7 +109,7 @@ const OurProjects = () => {
                         <img
                           src={item.img}
                           alt={categoryName}
-                          className="w-full h-full object-cover transition-transform transform hover:scale-105"
+                          className="w-full h-full object-fill transition-transform transform hover:scale-105"
                         />
                         {item.link && (
                           <div className="absolute inset-0 bg-black opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
@@ -127,35 +131,41 @@ const OurProjects = () => {
                     {samples.map((item: SampleInfo, idx: number) => (
                       <div
                         key={idx}
-                        className="relative overflow-hidden object-fill rounded-md border border-primary hover:shadow-lg md:mx-2 h-[300px] md:h-[400px]"
+                        className="relative overflow-hidden object-fill  rounded-md border border-primary hover:shadow-lg md:mx-2 h-[240px] md:h-[350px]"
                       >
                         <img
                           src={item.img}
                           alt={item.link}
-                          className="w-full h-full object-cover transition-transform transform hover:scale-105"
+                          className="w-full h-full object-contain md:object-cover transition-transform transform hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-black opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
                           <div className="flex flex-col items-start space-y-10">
-                            <span
-                              className="text-white text-lg font-semibold font-header  cursor-pointer"
+                            <div
+                              className="flex flex-row items-center space-x-3  cursor-pointer"
                               onClick={() => {
                                 if (item.link) {
                                   window.open(item.link, "_blank");
                                 }
                               }}
                             >
-                              google play
-                            </span>
-                            <span
-                              className="text-white text-lg font-semibold font-header  cursor-pointer"
+                              <FaGooglePlay className="text-white h-8 w-8" />
+                              <span className="text-white text-lg font-semibold font-header">
+                                google play
+                              </span>
+                            </div>
+                            <div
+                              className="flex flex-row items-center space-x-3  cursor-pointer"
                               onClick={() => {
                                 if (item.secondLink) {
                                   window.open(item.link, "_blank");
                                 }
                               }}
                             >
-                              app store
-                            </span>
+                              <FaAppStoreIos className="text-white h-8 w-8" />
+                              <span className="text-white text-lg font-semibold font-header ">
+                                app store
+                              </span>
+                            </div>
                           </div>
                         </div>
                         {/* {item.link && (

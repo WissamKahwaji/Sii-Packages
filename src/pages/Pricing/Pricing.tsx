@@ -14,6 +14,7 @@ const Pricing: React.FC = () => {
   const { id } = useParams<IdParams>();
 
   const [showModal, setShowModal] = useState<number | null>(null);
+  const dotListClass = "absolute top-0  transform  h-10";
 
   const RESPONSIVE = {
     xxl: {
@@ -115,12 +116,12 @@ const Pricing: React.FC = () => {
 
   return (
     <div className="relative w-full bg-gray-100 pt-8">
-      <div className="text-center mb-4 md:mb-8 mx-5 md:mx-0">
+      <div className="text-center  mx-5 md:mx-0">
         <h2 className="text-3xl sm:text-4xl font-semibold font-header mb-5 text-primary">
           {selectedLang === "en" ? category?.name_en : category?.name_ar}
         </h2>
-        <p className="text-base md:text-lg text-secondary font-body leading-7 max-w-[700px] mx-auto">
-          {t("choose_package_sent")}
+        <p className="text-lg md:text-2xl text-secondary font-body leading-7 max-w-[700px] mx-auto">
+          {t("pick_your_perfect_plan")}
         </p>
       </div>
       {category?.packages.length === 0 ? (
@@ -133,31 +134,55 @@ const Pricing: React.FC = () => {
         // <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 py-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         // </div>
-        <div className="">
+        <div className="mt-4">
           <Carousel
             responsive={RESPONSIVE}
             infinite
             autoPlay
-            className="md:mx-10 md:my-5 py-10 mx-3"
+            showDots
+            dotListClass={dotListClass}
+            className="md:mx-10 md:pb-14 pt-16 mx-3  relative"
           >
             {category?.packages.map((item, index) => (
               <div
                 key={index}
-                className="rounded-lg mx-2 h-full overflow-hidden bg-white shadow-lg transform transition-transform hover:scale-105 border border-gray-300 hover:border-primary"
+                className="relative mt-6   rounded-lg mx-2 h-full bg-white shadow-lg transform transition-transform hover:scale-105 border border-gray-300 hover:border-primary"
               >
+                {item.isPopular && (
+                  <div className="absolute capitalize top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary px-7 py-1 text-sm font-semibold tracking-wide text-white rounded-full shadow-md">
+                    {t("most_popular")}
+                  </div>
+                )}
                 <div className="p-8">
-                  <h3 className="text-2xl h-[30px] text-center font-semibold font-header text-secondary  mb-7">
+                  <h3 className="text-2xl h-[30px] text-center font-semibold font-header text-secondary mb-8 md:mb-2">
                     {selectedLang === "en" ? item.title_en : item.title_ar}
                   </h3>
+                  <div className="h-4">
+                    <p className="text-lg text-gray-500 text-center font-body capitalize">
+                      {selectedLang === "en"
+                        ? item.subTitle_en
+                        : item.subTitle_ar}
+                    </p>
+                  </div>
+                  <div className="mt-6 w-full   bg-slate-50   rounded-lg p-6 ">
+                    <p className="text-xl text-center font-semibold text-gray-900">
+                      <span className="text-secondary">{t("AED")}</span>
+                      <span className="m-1 text-3xl font-bold font-body text-primary">
+                        {formatPrice(item.price)}
+                      </span>
+                      {item.isMonthly && (
+                        <span className="text-secondary text-sm">
+                          /{t("monthly")}
+                        </span>
+                      )}
+                    </p>
+                  </div>
                   <button
                     onClick={() => setShowModal(index)}
-                    className="mt-6 w-full border-secondary bg-slate-100 border border-gray-300 rounded-lg p-6 hover:border-primary hover:bg-gray-200 transition-colors duration-300"
+                    className="mt-6 w-full border-secondary bg-slate-100 border border-gray-300   p-6 hover:border-primary hover:bg-gray-200 transition-colors duration-300"
                   >
-                    <p className="text-xl font-semibold text-gray-900">
-                      <span className="ml-3 text-3xl font-bold font-body text-primary">
-                        {formatPrice(item.price)}
-                      </span>{" "}
-                      <span className="text-secondary">{t("AED")}</span>
+                    <p className="text-xl font-semibold text-primary">
+                      {t("choose_the_package")}
                     </p>
                   </button>
                   <ul className="mt-6 space-y-4">

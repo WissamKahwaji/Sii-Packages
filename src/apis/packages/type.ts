@@ -5,6 +5,10 @@ export type Package = {
   price: number;
   features: Feature[];
   categoryId: string;
+  isPopular: boolean;
+  isMonthly: boolean;
+  subTitle_en: string;
+  subTitle_ar: string;
 };
 
 export type Category = {

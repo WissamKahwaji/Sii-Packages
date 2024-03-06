@@ -1,18 +1,6 @@
 import React, { useState } from "react";
 import baseUrl from "../../constants/domain";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import {
-  FaFacebookSquare,
-  FaInstagramSquare,
-  FaLinkedin,
-  FaPhone,
-  FaSnapchatSquare,
-  FaTiktok,
-  FaTwitterSquare,
-  FaWhatsappSquare,
-} from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
 
 const ContactUs = () => {
   const { t } = useTranslation();
@@ -76,7 +64,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="py-1 md:p-16 w-full bg-secondary/20">
+    <div className="py-1 px-4 md:p-16 w-full bg-secondary/20">
       <div className="w-[98%] m-auto max-w-[1400px]">
         <div className="grid grid-cols-1 pb-8 text-center pt-4">
           <h3 className="mb-4 md:text-2xl text-xl font-bold font-header text-primary capitalize">
@@ -85,111 +73,28 @@ const ContactUs = () => {
           <p className="text-secondary max-w-xl mx-auto font-body font-semibold">
             {t("get_in_touch_subtitle")}
           </p>
+          <p className="text-gray-500 mt-2 font-body text-sm">
+            {t("get_in_touch_subtitle_two")}
+          </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 mx-auto md:mx-auto my-10 w-[90%]">
+        <div className="grid grid-cols-1 md:grid-cols-2 mx-auto md:mx-auto my-10 w-full gap-x-7">
           <div className="flex flex-col gap-8 bg-gray-background md:px-4">
             <div>
               <p className="mb-6 text-2xl font-semibold font-header capitalize text-primary">
                 {t("location")}
               </p>
               <p className="font-semibold font-body text-gray-500 text-sm lg:text-lg  ">
-                {t("United Arab Emirates - Dubai")}
+                {t("location_det")}
               </p>
             </div>
             <div>
-              <p className="mb-6 text-2xl font-semibold font-header capitalize text-primary">
-                {t("contact_info")}
-              </p>
-              <ul className="flex flex-col justify-center gap-4">
-                <li>
-                  <p
-                    className="flex items-center gap-2  font-semibold cursor-pointer w-max"
-                    onClick={() => {
-                      window.location.href = `mailto:info@siimedia.net`;
-                    }}
-                  >
-                    <MdEmail />
-                    <span>info@siimedia.net</span>
-                  </p>
-                </li>
-
-                <li>
-                  <p
-                    className=" flex items-center gap-2 font-semibold cursor-pointer w-max"
-                    onClick={() => {
-                      window.location.href = `tel:+971545615757`;
-                    }}
-                  >
-                    <FaPhone />
-                    <span style={{ direction: "ltr" }}>+971 54 561 5757</span>
-                  </p>
-                </li>
-                <li>
-                  <p
-                    className="flex items-center gap-2 font-semibold cursor-pointer w-max"
-                    onClick={() => {
-                      window.location.href = `tel:+971542998757`;
-                    }}
-                  >
-                    <FaPhone />
-                    <span style={{ direction: "ltr" }}>+971 54 299 8757</span>
-                  </p>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <p className="mb-6 text-2xl font-semibold font-header capitalize text-primary">
-                {t("social media")}
-              </p>
-              <ul className="mb-2 flex gap-2">
-                <li>
-                  <Link to={`https://wa.me/+971542998757`} target="_blank">
-                    <FaWhatsappSquare className="h-8 w-8 text-gray-500 hover:text-primary transition-transform hover:scale-105 md:h-12 md:w-12" />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="https://www.facebook.com/SiiMedia.ae"
-                    target="_blank"
-                  >
-                    <FaFacebookSquare className="h-8 w-8 text-gray-500 hover:text-primary transition-transform hover:scale-105 md:h-12 md:w-12" />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="https://www.instagram.com/siimedia/"
-                    target="_blank"
-                  >
-                    <FaInstagramSquare className="h-8 w-8 text-gray-500 hover:text-primary transition-transform hover:scale-105 md:h-12 md:w-12" />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="https://www.linkedin.com/company/sii-media"
-                    target="_blank"
-                  >
-                    <FaLinkedin className="h-8 w-8 text-gray-500 hover:text-primary transition-transform hover:scale-105 md:h-12 md:w-12" />
-                  </Link>
-                </li>
-              </ul>
-              <ul className="mb-2 flex gap-2">
-                <li>
-                  <Link to="https://t.snapchat.com/O0pjBC6s" target="_blank">
-                    <FaSnapchatSquare className="h-8 w-8 text-gray-500 hover:text-primary transition-transform hover:scale-105 md:h-12 md:w-12" />
-                  </Link>
-                </li>{" "}
-                <li>
-                  <Link to="https://twitter.com/siimedia" target="_blank">
-                    <FaTwitterSquare className="h-8 w-8 text-gray-500 hover:text-primary transition-transform hover:scale-105 md:h-12 md:w-12" />
-                  </Link>
-                </li>
-                <li>
-                  <Link to="https://www.tiktok.com/@siimedia" target="_blank">
-                    <FaTiktok className="h-8 w-8 text-gray-500 hover:text-primary transition-transform hover:scale-105 md:h-12 md:w-12" />
-                  </Link>
-                </li>
-              </ul>
-              <ul className="flex gap-2"></ul>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14441.802897644364!2d55.288398869188605!3d25.188018192405522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6831f6693c85%3A0xb5b269f7897f4978!2zT3BhbCBUb3dlciAtINin2YTYrtmE2YrYrCDYp9mE2KrYrNin2LHZiiAtINiv2KjZig!5e0!3m2!1sar!2sae!4v1709622847553!5m2!1sar!2sae"
+                width="600"
+                height="450"
+                className="w-full"
+                loading="lazy"
+              ></iframe>
             </div>
           </div>
           <div className="border border-primary mt-4 md:mt-0 p-4 md:p-6 lg:p-8 rounded-lg">
@@ -279,23 +184,6 @@ const ContactUs = () => {
               </button>
             </form>
           </div>
-        </div>
-        <div className="  flex flex-col py-10  w-full h-full   text-primary z-1 ">
-          <p className="capitalize font-header text-3xl md:text-5xl text-center my-10">
-            {t("location_map")}
-          </p>
-          <p className="capitalize font-body text-secondary text-base md:text-2xl text-center">
-            {t("location_det")}
-          </p>
-        </div>
-        <div>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14441.802897644364!2d55.288398869188605!3d25.188018192405522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6831f6693c85%3A0xb5b269f7897f4978!2zT3BhbCBUb3dlciAtINin2YTYrtmE2YrYrCDYp9mE2KrYrNin2LHZiiAtINiv2KjZig!5e0!3m2!1sar!2sae!4v1709622847553!5m2!1sar!2sae"
-            width="600"
-            height="450"
-            className="w-full"
-            loading="lazy"
-          ></iframe>
         </div>
       </div>
     </div>

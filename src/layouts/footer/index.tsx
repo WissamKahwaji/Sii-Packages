@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-background text-secondary px-2 pt-12 pb-2 border-t border-primary">
-      <div className="container mx-auto flex flex-wrap justify-between items-center w-full md:px-20">
+      <div className="container mx-auto flex flex-wrap justify-between items-start w-full md:px-20">
         <div className="w-full  sm:w-auto mb-8 sm:mb-0 flex justify-start flex-col items-start">
           <div className="w-full sm:w-auto sm:mb-0 mb-5 md:mb-7">
             <img
@@ -157,6 +157,38 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
             ))}
+          </ul>
+        </div>
+        <div className="mb-8">
+          <h4 className="pb-3 text-xl text-primary font-semibold">
+            {t("useful_links")}
+          </h4>
+          <ul>
+            <li className="pb-3">
+              <Link to="/packages" className="hover:text-primary">
+                {t("packages")}
+              </Link>
+            </li>
+            <li className="pb-3">
+              <Link to="/our-projects" className="hover:text-primary">
+                {t("our_projects")}
+              </Link>
+            </li>
+            <li className="pb-3">
+              <Link to="/about-us" className="hover:text-primary">
+                {t("about_us")}
+              </Link>
+            </li>
+            <li className="pb-3">
+              <Link to="/our-clients" className="hover:text-primary capitalize">
+                {t("our_clients")}
+              </Link>
+            </li>
+            <li className="pb-3">
+              <Link to="/contact-us" className="hover:text-primary capitalize">
+                contact us
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="md:max-w-md max-w-max  ">

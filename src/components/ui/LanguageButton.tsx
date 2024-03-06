@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai";
 import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 
 const LanguageButton = () => {
   const { i18n } = useTranslation();
@@ -40,7 +41,7 @@ const LanguageButton = () => {
               }}
             >
               <h3 className="capitalize my-1 font-body text-sm md:text-base ">
-                {lang}
+                {t(lang)}
               </h3>
             </div>
           ))}

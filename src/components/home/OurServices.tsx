@@ -64,9 +64,9 @@ const OurServices = () => {
                 key={index}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="max-w-md rounded h-auto overflow-hidden bg-transparent border-2 border-secondary hover:border-primary shadow-lg  mx-4 mb-4 md:mb-8 hover:shadow-xl transform transition duration-300 hover:-translate-y-1 cursor-pointer"
+                className="relative max-w-md rounded h-auto pb-6 bg-transparent border-2 border-secondary hover:border-primary shadow-lg  mx-4 mb-8 md:mb-8 hover:shadow-xl transform transition duration-300 hover:-translate-y-1 cursor-pointer"
               >
-                <Link to={`pricing/${category._id}`}>
+                <div>
                   <div className="flex flex-col items-center justify-start p-3 h-full w-full">
                     <div className="font-bold font-header flex  text-gray-900 text-base md:text-xl mb-5">
                       {selectedLang === "en"
@@ -94,17 +94,13 @@ const OurServices = () => {
                           </span>
                         )}
                     </div>
-                    {/* <p className="text-gray-700 text-base">
-                      {selectedLang === "en"
-                        ? category.description_en
-                        : category.description_ar}
-                    </p> */}
                   </div>
-                  {/* <div className="px-6 py-4">
-                  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-                    {service.icon}
-                  </span>
-                </div> */}
+                </div>
+                <Link
+                  to={`pricing/${category._id}`}
+                  className="absolute bottom-0 left-0 translate-y-4 translate-x-1/2 w-1/2 bg-primary text-white font-header text-center py-2 rounded-lg border border-white shadow-lg hover:bg-secondary hover:border-secondary hover:shadow-xl"
+                >
+                  {t("discover_packages")}
                 </Link>
               </motion.div>
             ))}

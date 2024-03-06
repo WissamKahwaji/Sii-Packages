@@ -7,9 +7,14 @@ const ABOUT = {
   GET: "/about",
 };
 
+const CLIENTS = {
+  GET: "/our-clients",
+};
+
 const API_ROUTES = {
   PACKAGES,
   ABOUT,
+  CLIENTS,
 };
 
 export default API_ROUTES;

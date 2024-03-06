@@ -85,6 +85,9 @@ const ContactSection = () => {
           <p className="text-secondary max-w-xl mx-auto font-body font-semibold">
             {t("get_in_touch_subtitle")}
           </p>
+          <p className="text-gray-500 mt-2 font-body text-sm">
+            {t("get_in_touch_subtitle_two")}
+          </p>
         </div>
         <div className="mx-auto md:mx-auto my-5 md:my-10 w-[90%] md:w-1/2">
           {/* <div className="flex flex-col gap-8 bg-gray-background md:px-4">

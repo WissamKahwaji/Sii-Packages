@@ -2,8 +2,8 @@
     "welcom_to":"Welcom to",
     "our_projects":"Our Projects",
     "about_us" :"About Us",
-    "ar":"Ar",
-    "en":"En",
+    "ar":"العربية",
+    "en":"English",
     "bio_sentence":"Sii Media is a digital services company based in Dubai, United Arab Emirates, with a mission to provide top-notch digital services and creative solutions that align with the global trend towards digital transformation in the UAE and around the world. Given the critical role of digital services in today's world, where it is a key factor for success in various types of projects, from small home-based businesses to large global corporations like Google and Microsoft, we at Sii Media strive to empower and support individuals and businesses aspiring for success in the business world. We are committed to helping our clients and partners stay up-to-date with future aspirations and challenges.",
     "get_in_touch":"Get in touch",
     "about":"About",
@@ -42,6 +42,14 @@
     "show_more":"Show More",
     "show_less":"Show Less",
     "location_map":"location map",
-    "location_det":"United Arab Emirates - Dubai - Business Bay - Opal Tower - Office 1608"
-
+    "location_det":"United Arab Emirates - Dubai - Business Bay - Opal Tower - Office 1608",
+    "our_clients_bio":"Our clients are our partners in success, contributing significantly to shaping the success story of Sii Media. At Sii Media, our steadfast commitment is to deliver unparalleled services that consistently meet the highest quality standards, fostering an environment of continuous and cornerstone of our ongoing success, and we are grateful to have you as a valued partner in our journey.",
+    "clients":"Clients",
+    "pick_your_perfect_plan":"Pick Your Perfect Plan",
+    "most_popular":"Most Popular",
+    "choose_the_package":"Choose the Package",
+    "monthly":"monthly",
+    "useful_links":"Useful Links",
+    "discover_packages":"Discover Packages",
+    "get_in_touch_subtitle_two":"Make the decision to change and contact the professional Sii Media team"
 }

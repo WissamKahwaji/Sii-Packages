@@ -14,6 +14,7 @@ import OurProjects from "./pages/Our_Projects";
 import AboutUs from "./pages/about_us";
 import OurPackages from "./pages/packages";
 import ContactUs from "./pages/contact_us";
+import OurClients from "./pages/our_clients";
 
 const Routes = () => {
   const router = createBrowserRouter(
@@ -30,6 +31,7 @@ const Routes = () => {
           element={<SamplesPage />}
         />
         <Route path="about-us" element={<AboutUs />} />
+        <Route path="our-clients" element={<OurClients />} />
         <Route path="contact-us" element={<ContactUs />} />
       </Route>
     )
