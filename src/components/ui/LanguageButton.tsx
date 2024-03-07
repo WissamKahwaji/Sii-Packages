@@ -5,15 +5,17 @@ import { t } from "i18next";
 
 const LanguageButton = () => {
   const { i18n } = useTranslation();
+  const [lang, setLang] = useState("en");
   useEffect(() => {
     document.body.dir = i18n.dir();
-  }, [i18n, i18n.language]);
+  }, [i18n, lang]);
   const changeLanguage = (lng: string) => {
     console.log("asda");
+    setLang(lng);
     i18n.changeLanguage(lng);
   };
   const [isOpen, setIsOpen] = useState(false);
-  const [lang, setLang] = useState("en");
+
   const langList = ["en", "ar"];
   return (
     <div className="relative flex flex-col items-center  rounded-lg">
