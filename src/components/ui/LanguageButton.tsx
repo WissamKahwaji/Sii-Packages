@@ -13,7 +13,7 @@ const LanguageButton = () => {
     i18n.changeLanguage(lng);
   };
   const [isOpen, setIsOpen] = useState(false);
-  const [lang, setLang] = useState(i18n.language);
+  const [lang, setLang] = useState("en");
   const langList = ["en", "ar"];
   return (
     <div className="relative flex flex-col items-center  rounded-lg">
