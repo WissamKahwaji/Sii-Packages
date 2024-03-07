@@ -46,7 +46,7 @@ const OurClients = () => {
               <img
                 src={client.logo}
                 alt={client.name}
-                className="w-auto h-20 md:h-32 object-contain mb-4 rounded-full mx-auto"
+                className="w-auto h-20 md:h-32 object-contain mb-4  mx-auto"
               />
             </div>
 

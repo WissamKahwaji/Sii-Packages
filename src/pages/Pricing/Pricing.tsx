@@ -216,7 +216,7 @@ const Pricing: React.FC = () => {
                               key={index}
                               className="flex flex-row justify-end  items-center text-sm leading-6 text-gray-700"
                             >
-                              <span className="text-xs md:text-base ml-3 font-body text-gray-800">
+                              <span className="text-xs md:text-base ml-3 text-end font-body text-gray-800">
                                 {selectedLang === "en"
                                   ? feature.title_en
                                   : feature.tital_ar}
