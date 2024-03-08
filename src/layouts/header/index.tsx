@@ -32,12 +32,12 @@ const Navbar = () => {
       icon: <MdWhatsapp className="h-6 w-6" />,
       link: "https://wa.me/+971542998757",
     },
+  ];
+  const socialMediaIcons2 = [
     {
       icon: <FiFacebook className="h-6 w-6" />,
       link: "https://www.facebook.com/SiiMedia.ae",
     },
-  ];
-  const socialMediaIcons2 = [
     {
       icon: <FiInstagram className="h-6 w-6" />,
       link: "https://www.instagram.com/siimedia/",
