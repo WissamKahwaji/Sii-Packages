@@ -17,6 +17,8 @@ export type Category = {
   name_ar: string;
   description_en: string;
   description_ar: string;
+  subcategories: SubCategory[];
+  hasSubcategories: boolean;
   packages: Package[];
   samples: Samples[];
 };
@@ -35,4 +37,11 @@ export type SampleInfo = {
   img: string;
   link: string;
   secondLink: string;
+};
+
+export type SubCategory = {
+  _id?: string;
+  name_en: string;
+  name_ar: string;
+  packages: Package[];
 };
