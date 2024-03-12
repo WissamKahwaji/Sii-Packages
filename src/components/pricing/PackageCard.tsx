@@ -32,7 +32,7 @@ const PackageCard: React.FC<PackageCardProps> = ({
           {selectedLang === "en" ? item.title_en : item.title_ar}
         </h3>
         <div className="h-4">
-          <p className="text-lg text-gray-500 text-center font-body capitalize">
+          <p className="text-base md:text-lg text-gray-500 text-center font-body capitalize">
             {selectedLang === "en" ? item.subTitle_en : item.subTitle_ar}
           </p>
         </div>
