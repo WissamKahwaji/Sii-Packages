@@ -142,7 +142,7 @@ const Pricing: React.FC = () => {
               {category.subcategories.map(category => (
                 <div
                   key={category._id}
-                  className={`flex-grow p-4 cursor-pointer text-center font-serif text-lg uppercase  hover:bg-gray-100 ${
+                  className={`flex-grow p-4 cursor-pointer text-center font-serif text-sm md:text-lg uppercase  hover:bg-gray-100 ${
                     activeTab?._id === category._id
                       ? "border-b-2 border-primary text-primary"
                       : "text-secondary"
