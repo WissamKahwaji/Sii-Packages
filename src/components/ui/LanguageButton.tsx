@@ -5,18 +5,34 @@ import { t } from "i18next";
 
 const LanguageButton = () => {
   const { i18n } = useTranslation();
-  const [lang, setLang] = useState("en");
+  const storedLanguage = localStorage.getItem("selectedLanguage");
+  const [lang, setLang] = useState(storedLanguage || "en");
+  // const [initialized, setInitialized] = useState(false);
+
+  // useEffect(() => {
+  //   if (!initialized) {
+  //     setInitialized(true);
+  //     if (storedLanguage && storedLanguage === "ar") {
+  //       setLang("en");
+  //       localStorage.setItem("selectedLanguage", "en");
+  //     }
+  //   }
+  // }, [storedLanguage, initialized]);
+
   useEffect(() => {
-    document.body.dir = i18n.dir();
+    document.body.dir = i18n.dir(lang);
+    i18n.changeLanguage(lang);
   }, [i18n, lang]);
+
   const changeLanguage = (lng: string) => {
-    console.log("asda");
     setLang(lng);
-    i18n.changeLanguage(lng);
+    localStorage.setItem("selectedLanguage", lng);
   };
+
   const [isOpen, setIsOpen] = useState(false);
 
   const langList = ["en", "ar"];
+
   return (
     <div className="relative flex flex-col items-center  rounded-lg">
       <button
