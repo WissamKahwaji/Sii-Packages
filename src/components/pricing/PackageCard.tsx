@@ -36,17 +36,19 @@ const PackageCard: React.FC<PackageCardProps> = ({
             {selectedLang === "en" ? item.subTitle_en : item.subTitle_ar}
           </p>
         </div>
-        <div className="mt-6 w-full   bg-slate-50   rounded-lg p-6 ">
-          <p className="text-xl text-center font-semibold text-gray-900">
-            <span className="text-secondary">{t("AED")}</span>
-            <span className="m-1 text-3xl font-bold font-body text-primary">
-              {formatPrice(item.price)}
-            </span>
-            {item.isMonthly && (
-              <span className="text-secondary text-sm">/{t("monthly")}</span>
-            )}
-          </p>
-        </div>
+        {item.price && (
+          <div className="mt-6 w-full   bg-slate-50   rounded-lg p-6 ">
+            <p className="text-xl text-center font-semibold text-gray-900">
+              <span className="text-secondary">{t("AED")}</span>
+              <span className="m-1 text-3xl font-bold font-body text-primary">
+                {item.price && formatPrice(item.price)}
+              </span>
+              {item.isMonthly && (
+                <span className="text-secondary text-sm">/{t("monthly")}</span>
+              )}
+            </p>
+          </div>
+        )}
         <button
           onClick={setShowModal}
           className="mt-6 w-full border-secondary bg-slate-100 border border-gray-300   p-6 hover:border-primary hover:bg-gray-200 transition-colors duration-300"

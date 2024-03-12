@@ -1,5 +1,5 @@
 import { IdParams } from "./type";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useGetCategoryPackagesQuery } from "../../apis/packages/queries";
 import { SampleInfo, Samples } from "../../apis/packages/type";
 import ReactImageGallery from "react-image-gallery";
@@ -37,6 +37,8 @@ const SamplesPage = () => {
       items: 1,
     },
   };
+
+  const { state } = useLocation();
   const {
     data: category,
     isLoading,
@@ -49,7 +51,10 @@ const SamplesPage = () => {
     <div className="relative w-full bg-gray-100 pt-8">
       <div className="text-center mb-8">
         <h2 className="text-3xl sm:text-4xl font-semibold font-header mb-5 text-primary">
-          {category?.name_en} Samples
+          {category?.hasSubcategories === true
+            ? state.subCategory.name_en
+            : category?.name_en}{" "}
+          Samples
         </h2>
       </div>
       {category?.samples.length === 0 ? (
@@ -163,24 +168,54 @@ const SamplesPage = () => {
             </>
           ) : (
             <>
-              {category?.samples.map((sample: Samples, index: number) => (
-                <div key={index}>
-                  <p className="font-header text-2xl text-secondary font-semibold uppercase">
-                    {sample.name}
-                  </p>
-                  <div className="mt-8">
-                    {sample.samples && (
-                      <ReactImageGallery
-                        items={sample.samples.map((item: SampleInfo) => ({
-                          original: item.img,
-                          thumbnail: item.img,
-                          description: sample.name,
-                        }))}
-                      />
+              {category?.hasSubcategories === true ? (
+                <>
+                  {state.subCategory.samples &&
+                    state.subCategory.samples.map(
+                      (sample: Samples, index: number) => (
+                        <div key={index}>
+                          <p className="font-header text-2xl text-secondary font-semibold uppercase">
+                            {sample.name}
+                          </p>
+                          <div className="mt-8">
+                            {sample.samples && (
+                              <ReactImageGallery
+                                items={sample.samples.map(
+                                  (item: SampleInfo) => ({
+                                    original: item.img,
+                                    thumbnail: item.img,
+                                    description: sample.name,
+                                  })
+                                )}
+                              />
+                            )}
+                          </div>
+                        </div>
+                      )
                     )}
-                  </div>
-                </div>
-              ))}
+                </>
+              ) : (
+                <>
+                  {category?.samples.map((sample: Samples, index: number) => (
+                    <div key={index}>
+                      <p className="font-header text-2xl text-secondary font-semibold uppercase">
+                        {sample.name}
+                      </p>
+                      <div className="mt-8">
+                        {sample.samples && (
+                          <ReactImageGallery
+                            items={sample.samples.map((item: SampleInfo) => ({
+                              original: item.img,
+                              thumbnail: item.img,
+                              description: sample.name,
+                            }))}
+                          />
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </>
+              )}
             </>
           )}
         </div>

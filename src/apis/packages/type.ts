@@ -2,7 +2,7 @@ export type Package = {
   _id?: string;
   title_en: string;
   title_ar: string;
-  price: number;
+  price?: number;
   features: Feature[];
   categoryId: string;
   isPopular: boolean;
@@ -44,4 +44,5 @@ export type SubCategory = {
   name_en: string;
   name_ar: string;
   packages: Package[];
+  samples: Samples[];
 };

@@ -161,7 +161,7 @@ const Pricing: React.FC = () => {
                     infinite
                     showDots
                     dotListClass={dotListClass}
-                    className="md:mx-10 md:pb-14 pt-16 mx-3  relative"
+                    className="md:mx-10 md:pb-14 pt-16 pb-16 mx-3  relative"
                   >
                     {activeTab?.packages.map((item, index) => (
                       <PackageCard
@@ -296,7 +296,7 @@ const Pricing: React.FC = () => {
                 infinite
                 showDots
                 dotListClass={dotListClass}
-                className="md:mx-10 md:pb-14 pt-16 mx-3  relative"
+                className="md:mx-10 md:pb-20 pt-16 pb-16 mx-3  relative"
               >
                 {category?.packages.map((item, index) => (
                   <PackageCard
@@ -533,7 +533,11 @@ const Pricing: React.FC = () => {
       )}
       <div className="text-center my-6">
         <button
-          onClick={() => navigate(`samples/${category?._id}`)}
+          onClick={() =>
+            navigate(`samples/${category?._id}`, {
+              state: { subCategory: activeTab },
+            })
+          }
           className="bg-transparent shadow-lg border border-secondary font-header font-bold w-3/4 md:w-3/6 text-gray-900 py-4 px-6 rounded-lg hover:border-primary transform transition-transform hover:scale-105 duration-300 delay-100 hover:animate-pulse"
         >
           {t("show_samples")}
