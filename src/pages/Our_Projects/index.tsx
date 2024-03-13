@@ -92,7 +92,9 @@ const OurProjects = () => {
               </div>
               <div className="flex flex-col">
                 {categoryName === "Websites & Online shops" ||
-                categoryName === "Photography and videography" ? (
+                categoryName === "المواقع والمتاجر الإلكترونية" ||
+                categoryName === "Photography and videography" ||
+                categoryName === "التصوير الفوتوغرافي والفيديو" ? (
                   <Carousel
                     responsive={RESPONSIVE}
                     infinite
@@ -124,7 +126,8 @@ const OurProjects = () => {
                       </div>
                     ))}
                   </Carousel>
-                ) : categoryName === "Application developing & programming" ? (
+                ) : categoryName === "Application developing & programming" ||
+                  categoryName === "تطوير وبرمجة التطبيقات" ? (
                   <Carousel
                     responsive={RESPONSIVE}
                     infinite

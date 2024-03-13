@@ -52,7 +52,7 @@ const SamplesPage = () => {
   return (
     <div className="relative w-full bg-gray-100 pt-8">
       <div className="text-center mb-8">
-        <h2 className="text-3xl sm:text-4xl font-semibold font-header mb-5 text-primary">
+        <h2 className="text-3xl sm:text-4xl font-semibold font-header mb-5 text-primary uppercase">
           {category?.hasSubcategories === true
             ? selectedLang === "en"
               ? state.subCategory.name_en
