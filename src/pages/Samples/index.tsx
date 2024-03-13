@@ -9,7 +9,8 @@ import { useTranslation } from "react-i18next";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 const SamplesPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const selectedLang = i18n.language;
   const { id } = useParams<IdParams>();
   const RESPONSIVE = {
     xxl: {
@@ -52,9 +53,12 @@ const SamplesPage = () => {
       <div className="text-center mb-8">
         <h2 className="text-3xl sm:text-4xl font-semibold font-header mb-5 text-primary">
           {category?.hasSubcategories === true
-            ? state.subCategory.name_en
-            : category?.name_en}{" "}
-          Samples
+            ? selectedLang === "en"
+              ? state.subCategory.name_en
+              : state.subCategory.name_ar
+            : selectedLang === "en"
+            ? category?.name_en
+            : category?.name_ar}
         </h2>
       </div>
       {category?.samples.length === 0 ? (
@@ -64,16 +68,13 @@ const SamplesPage = () => {
           </p>
         </div>
       ) : (
-        <div
-          style={{ direction: "ltr" }}
-          className=" flex flex-col gap-8 py-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
-        >
+        <div className=" flex flex-col gap-8 py-6 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {category?.name_en === "Websites & Online shops" ? (
             <>
               {category?.samples.map((sample: Samples, index: number) => (
                 <div key={index}>
                   <p className="font-header text-2xl text-secondary font-semibold uppercase">
-                    {sample.name}
+                    {selectedLang === "en" ? sample.name : sample.name_ar}
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                     {sample.samples.map((item: SampleInfo, idx: number) => (
@@ -109,7 +110,7 @@ const SamplesPage = () => {
               {category.samples.map((sample: Samples, index: number) => (
                 <div key={index}>
                   <p className="font-header text-2xl text-secondary font-semibold uppercase">
-                    {sample.name}
+                    {selectedLang === "en" ? sample.name : sample.name_ar}
                   </p>
                   <div className="mt-8">
                     <Carousel
@@ -175,7 +176,9 @@ const SamplesPage = () => {
                       (sample: Samples, index: number) => (
                         <div key={index}>
                           <p className="font-header text-2xl text-secondary font-semibold uppercase">
-                            {sample.name}
+                            {selectedLang === "en"
+                              ? sample.name
+                              : sample.name_ar}
                           </p>
                           <div className="mt-8">
                             {sample.samples && (
@@ -199,7 +202,7 @@ const SamplesPage = () => {
                   {category?.samples.map((sample: Samples, index: number) => (
                     <div key={index}>
                       <p className="font-header text-2xl text-secondary font-semibold uppercase">
-                        {sample.name}
+                        {selectedLang === "en" ? sample.name : sample.name_ar}
                       </p>
                       <div className="mt-8">
                         {sample.samples && (

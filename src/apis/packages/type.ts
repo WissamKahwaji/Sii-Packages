@@ -30,6 +30,8 @@ export type Feature = {
 
 export type Samples = {
   name: string;
+  name_ar: string;
+
   samples: SampleInfo[];
 };
 
