@@ -37,16 +37,19 @@ const OurProjects = () => {
       items: 1,
     },
   };
+
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching data</div>;
 
   const groupedSamples: { [key: string]: SampleInfo[] } = {};
   categories?.forEach(category => {
+    const categoryName =
+      selectedLang === "en" ? category.name_en : category.name_ar;
     category.samples.forEach(sample => {
-      if (!groupedSamples[category.name_en]) {
-        groupedSamples[category.name_en] = [];
+      if (!groupedSamples[categoryName]) {
+        groupedSamples[categoryName] = [];
       }
-      groupedSamples[category.name_en].push(...sample.samples);
+      groupedSamples[categoryName].push(...sample.samples);
     });
   });
 
