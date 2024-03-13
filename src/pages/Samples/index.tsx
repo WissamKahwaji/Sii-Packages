@@ -8,6 +8,7 @@ import ContactSection from "../../components/home/ContactSection";
 import { useTranslation } from "react-i18next";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { FaAppStoreIos, FaGooglePlay } from "react-icons/fa";
 const SamplesPage = () => {
   const { t, i18n } = useTranslation();
   const selectedLang = i18n.language;
@@ -73,7 +74,7 @@ const SamplesPage = () => {
             <>
               {category?.samples.map((sample: Samples, index: number) => (
                 <div key={index}>
-                  <p className="font-header text-2xl text-secondary font-semibold uppercase">
+                  <p className="font-header text-base md:text-2xl text-secondary font-semibold uppercase">
                     {selectedLang === "en" ? sample.name : sample.name_ar}
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
@@ -109,7 +110,7 @@ const SamplesPage = () => {
             <>
               {category.samples.map((sample: Samples, index: number) => (
                 <div key={index}>
-                  <p className="font-header text-2xl text-secondary font-semibold uppercase">
+                  <p className="font-header text-base md:text-2xl text-secondary font-semibold uppercase">
                     {selectedLang === "en" ? sample.name : sample.name_ar}
                   </p>
                   <div className="mt-8">
@@ -131,26 +132,32 @@ const SamplesPage = () => {
                           />
                           <div className="absolute inset-0 bg-black opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
                             <div className="flex flex-col items-start space-y-10">
-                              <span
-                                className="text-white text-lg font-semibold font-header  cursor-pointer"
+                              <div
+                                className="flex flex-row items-center space-x-3  cursor-pointer"
                                 onClick={() => {
                                   if (item.link) {
                                     window.open(item.link, "_blank");
                                   }
                                 }}
                               >
-                                google play
-                              </span>
-                              <span
-                                className="text-white text-lg font-semibold font-header  cursor-pointer"
+                                <FaGooglePlay className="text-white h-8 w-8" />
+                                <span className="text-white text-lg font-semibold font-header">
+                                  google play
+                                </span>
+                              </div>
+                              <div
+                                className="flex flex-row items-center space-x-3  cursor-pointer"
                                 onClick={() => {
                                   if (item.secondLink) {
                                     window.open(item.link, "_blank");
                                   }
                                 }}
                               >
-                                app store
-                              </span>
+                                <FaAppStoreIos className="text-white h-8 w-8" />
+                                <span className="text-white text-lg font-semibold font-header ">
+                                  app store
+                                </span>
+                              </div>
                             </div>
                           </div>
                           {/* {item.link && (
@@ -175,7 +182,7 @@ const SamplesPage = () => {
                     state.subCategory.samples.map(
                       (sample: Samples, index: number) => (
                         <div key={index}>
-                          <p className="font-header text-2xl text-secondary font-semibold uppercase">
+                          <p className="font-header text-base md:text-2xl text-secondary font-semibold uppercase">
                             {selectedLang === "en"
                               ? sample.name
                               : sample.name_ar}
@@ -201,7 +208,7 @@ const SamplesPage = () => {
                 <>
                   {category?.samples.map((sample: Samples, index: number) => (
                     <div key={index}>
-                      <p className="font-header text-2xl text-secondary font-semibold uppercase">
+                      <p className="font-header text-base md:text-2xl text-secondary font-semibold uppercase">
                         {selectedLang === "en" ? sample.name : sample.name_ar}
                       </p>
                       <div className="mt-8">
