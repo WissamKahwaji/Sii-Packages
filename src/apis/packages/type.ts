@@ -9,6 +9,8 @@ export type Package = {
   isMonthly: boolean;
   subTitle_en: string;
   subTitle_ar: string;
+  priceTitle_en?: string;
+  priceTitle_ar?: string;
 };
 
 export type Category = {

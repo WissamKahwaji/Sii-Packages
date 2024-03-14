@@ -38,15 +38,41 @@ const PackageCard: React.FC<PackageCardProps> = ({
         </div>
         {item.price && (
           <div className="mt-6 w-full   bg-slate-50   rounded-lg p-6 ">
-            <p className="text-xl text-center font-semibold text-gray-900">
-              <span className="text-secondary">{t("AED")}</span>
-              <span className="m-1 text-3xl font-bold font-body text-primary">
-                {item.price && formatPrice(item.price)}
-              </span>
-              {item.isMonthly && (
-                <span className="text-secondary text-sm">/{t("monthly")}</span>
-              )}
-            </p>
+            {selectedLang === "en" ? (
+              <p className="text-xl text-center font-semibold text-gray-900 ">
+                {item.priceTitle_en && (
+                  <span className="text-secondary text-sm">
+                    {item.priceTitle_en}
+                  </span>
+                )}
+                <span className="m-1 text-3xl font-bold font-body text-primary">
+                  {item.price && formatPrice(item.price)}
+                </span>{" "}
+                <span className="text-secondary">{t("AED")}</span>
+                {item.isMonthly && (
+                  <span className="text-secondary text-sm">
+                    /{t("monthly")}
+                  </span>
+                )}
+              </p>
+            ) : (
+              <p className="text-xl text-center font-semibold text-gray-900 ">
+                {item.priceTitle_ar && (
+                  <span className="text-secondary text-sm">
+                    {item.priceTitle_ar}
+                  </span>
+                )}
+                <span className="m-1 text-3xl font-bold font-body text-primary">
+                  {item.price && formatPrice(item.price)}
+                </span>{" "}
+                <span className="text-secondary">{t("AED")}</span>
+                {item.isMonthly && (
+                  <span className="text-secondary text-sm">
+                    /{t("monthly")}
+                  </span>
+                )}
+              </p>
+            )}
           </div>
         )}
         <button
