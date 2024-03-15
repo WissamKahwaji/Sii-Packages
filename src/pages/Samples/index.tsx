@@ -140,7 +140,7 @@ const SamplesPage = () => {
                           )} */}
                           <div className="flex flex-row items-start justify-between mx-3 md:mx-40 mt-3 mb-2">
                             <div
-                              className="flex flex-row items-center space-x-2 md:space-x-3 cursor-pointer bg-gray-200 rounded-md p-2 hover:bg-gray-300 border border-gray-300 shadow-md"
+                              className="flex flex-row   items-center space-x-2 md:space-x-3 cursor-pointer bg-gray-200 rounded-md p-2 hover:bg-gray-300 border border-gray-300 shadow-md"
                               onClick={() => {
                                 if (item.link) {
                                   window.open(item.link, "_blank");
@@ -148,12 +148,12 @@ const SamplesPage = () => {
                               }}
                             >
                               <FaGooglePlay className="text-black h-5 w-5 md:h-8 md:w-8" />
-                              <span className="text-black text-sm md:text-lg font-semibold font-header">
+                              <span className="text-black text-sm md:text-lg font-semibold font-header capitalize">
                                 google play
                               </span>
                             </div>
                             <div
-                              className="flex flex-row items-center space-x-2 md:space-x-3 cursor-pointer bg-gray-200 rounded-md p-2 hover:bg-gray-300 border border-gray-300 shadow-md"
+                              className="flex flex-row   items-center space-x-2 md:space-x-3 cursor-pointer bg-gray-200 rounded-md py-2 px-5 md:py-2 md:px-5 hover:bg-gray-300 border border-gray-300 shadow-md"
                               onClick={() => {
                                 if (item.secondLink) {
                                   window.open(item.secondLink, "_blank");
@@ -161,7 +161,7 @@ const SamplesPage = () => {
                               }}
                             >
                               <FaAppStoreIos className="text-black h-5 w-5 md:h-8 md:w-8" />
-                              <span className="text-black text-sm md:text-lg font-semibold font-header">
+                              <span className="text-black text-sm md:text-lg font-semibold font-header capitalize">
                                 app store
                               </span>
                             </div>
