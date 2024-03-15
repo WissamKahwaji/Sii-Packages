@@ -6,6 +6,7 @@ import {
   FiInstagram,
   FiLinkedin,
   FiTwitter,
+  FiLink,
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import logo_black from "../../assets/logo_black.png";
@@ -85,6 +86,15 @@ const Footer: React.FC = () => {
             <span className="text-gray-700">
               {t("United Arab Emirates - Dubai")}
             </span>
+          </div>
+          <div
+            className="flex items-center mb-4 cursor-pointer"
+            onClick={() => {
+              window.location.href = `https://siimedia.net/`;
+            }}
+          >
+            <FiLink className="mx-2 text-primary " />
+            <span className="text-gray-700">www.siimedia.net</span>
           </div>
           <div
             className="flex items-center mb-4 cursor-pointer"

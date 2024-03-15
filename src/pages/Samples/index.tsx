@@ -123,43 +123,14 @@ const SamplesPage = () => {
                       {sample.samples.map((item: SampleInfo, idx: number) => (
                         <div
                           key={idx}
-                          className="relative overflow-hidden object-fill rounded-md border border-primary hover:shadow-lg md:mx-2 h-[300px] md:h-[600px]"
+                          className="flex flex-col object-fill rounded-md border border-primary hover:shadow-lg md:mx-2 h-[300px] md:h-[600px]"
                         >
                           <img
                             src={item.img}
                             alt={item.link}
-                            className="w-full h-full object-cover transition-transform transform hover:scale-105"
+                            className="w-full h-[90%] object-contain transition-transform transform hover:scale-105"
                           />
-                          <div className="absolute inset-0 bg-black opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
-                            <div className="flex flex-col items-start space-y-10">
-                              <div
-                                className="flex flex-row items-center space-x-3  cursor-pointer"
-                                onClick={() => {
-                                  if (item.link) {
-                                    window.open(item.link, "_blank");
-                                  }
-                                }}
-                              >
-                                <FaGooglePlay className="text-white h-8 w-8" />
-                                <span className="text-white text-lg font-semibold font-header">
-                                  google play
-                                </span>
-                              </div>
-                              <div
-                                className="flex flex-row items-center space-x-3  cursor-pointer"
-                                onClick={() => {
-                                  if (item.secondLink) {
-                                    window.open(item.link, "_blank");
-                                  }
-                                }}
-                              >
-                                <FaAppStoreIos className="text-white h-8 w-8" />
-                                <span className="text-white text-lg font-semibold font-header ">
-                                  app store
-                                </span>
-                              </div>
-                            </div>
-                          </div>
+                          {/* <div className="absolute inset-0 bg-black opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center"></div> */}
                           {/* {item.link && (
                             <div className="absolute inset-0 bg-black opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
                               <span className="text-white text-lg font-semibold">
@@ -167,6 +138,34 @@ const SamplesPage = () => {
                               </span>
                             </div>
                           )} */}
+                          <div className="flex flex-row items-start justify-between mx-7 md:mx-40 mt-3 mb-2">
+                            <div
+                              className="flex flex-row items-center space-x-3  cursor-pointer"
+                              onClick={() => {
+                                if (item.link) {
+                                  window.open(item.link, "_blank");
+                                }
+                              }}
+                            >
+                              <FaGooglePlay className="text-black h-8 w-8" />
+                              <span className="text-black text-lg font-semibold font-header">
+                                google play
+                              </span>
+                            </div>
+                            <div
+                              className="flex flex-row items-center space-x-3  cursor-pointer"
+                              onClick={() => {
+                                if (item.secondLink) {
+                                  window.open(item.link, "_blank");
+                                }
+                              }}
+                            >
+                              <FaAppStoreIos className="text-black h-8 w-8" />
+                              <span className="text-black text-lg font-semibold font-header ">
+                                app store
+                              </span>
+                            </div>
+                          </div>
                         </div>
                       ))}
                     </Carousel>
