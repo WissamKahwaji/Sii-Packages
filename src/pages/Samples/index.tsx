@@ -138,7 +138,7 @@ const SamplesPage = () => {
                               </span>
                             </div>
                           )} */}
-                          <div className="flex flex-row items-start justify-between mx-7 md:mx-40 mt-3 mb-2">
+                          <div className="flex flex-row items-start justify-between mx-3 md:mx-40 mt-3 mb-2">
                             <div
                               className="flex flex-row items-center space-x-3  cursor-pointer"
                               onClick={() => {
@@ -156,7 +156,7 @@ const SamplesPage = () => {
                               className="flex flex-row items-center space-x-3  cursor-pointer"
                               onClick={() => {
                                 if (item.secondLink) {
-                                  window.open(item.link, "_blank");
+                                  window.open(item.secondLink, "_blank");
                                 }
                               }}
                             >
