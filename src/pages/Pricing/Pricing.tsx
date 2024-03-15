@@ -131,6 +131,11 @@ const Pricing: React.FC = () => {
         <h2 className="text-3xl sm:text-4xl font-semibold font-header mb-5 text-primary">
           {selectedLang === "en" ? category?.name_en : category?.name_ar}
         </h2>
+        {category?.bio_en && (
+          <p className="text-lg md:text-2xl text-gray-500 font-body leading-7 mb-5 max-w-[700px] mx-auto">
+            {selectedLang === "en" ? category.bio_en : category.bio_ar}
+          </p>
+        )}
         <p className="text-lg md:text-2xl text-secondary font-body leading-7 max-w-[700px] mx-auto">
           {t("pick_your_perfect_plan")}
         </p>

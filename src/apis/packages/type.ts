@@ -23,6 +23,8 @@ export type Category = {
   hasSubcategories: boolean;
   packages: Package[];
   samples: Samples[];
+  bio_en?: string;
+  bio_ar?: string;
 };
 
 export type Feature = {
