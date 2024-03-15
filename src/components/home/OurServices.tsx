@@ -80,8 +80,8 @@ const OurServices = () => {
                           ? category.description_en
                           : category.description_ar
                         : selectedLang === "en"
-                        ? category.description_en.slice(0, 85)
-                        : category.description_ar.slice(0, 85)}
+                        ? category.description_en.slice(0, 87)
+                        : category.description_ar.slice(0, 87)}
                       {category.description_en &&
                         category.description_en.length > 100 && (
                           <span
