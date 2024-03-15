@@ -113,22 +113,22 @@ const SamplesPage = () => {
                   <p className="font-header text-base md:text-2xl text-secondary font-semibold uppercase">
                     {selectedLang === "en" ? sample.name : sample.name_ar}
                   </p>
-                  <div className="mt-8">
+                  <div className="mt-8 ">
                     <Carousel
                       responsive={RESPONSIVE}
                       infinite
                       autoPlay
-                      className=""
+                      className="pb-4"
                     >
                       {sample.samples.map((item: SampleInfo, idx: number) => (
                         <div
                           key={idx}
-                          className="flex flex-col object-fill rounded-md border border-primary hover:shadow-lg md:mx-2 h-[300px] md:h-[600px]"
+                          className="flex flex-col object-fill rounded-md border border-primary hover:shadow-lg md:mx-2 h-[310px] md:h-[610px]"
                         >
                           <img
                             src={item.img}
                             alt={item.link}
-                            className="w-full h-[90%] object-contain transition-transform transform hover:scale-105"
+                            className="w-full h-[87%] object-contain transition-transform transform hover:scale-105"
                           />
                           {/* <div className="absolute inset-0 bg-black opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center"></div> */}
                           {/* {item.link && (
@@ -140,28 +140,28 @@ const SamplesPage = () => {
                           )} */}
                           <div className="flex flex-row items-start justify-between mx-3 md:mx-40 mt-3 mb-2">
                             <div
-                              className="flex flex-row items-center space-x-3  cursor-pointer"
+                              className="flex flex-row items-center space-x-2 md:space-x-3 cursor-pointer bg-gray-200 rounded-md p-2 hover:bg-gray-300 border border-gray-300 shadow-md"
                               onClick={() => {
                                 if (item.link) {
                                   window.open(item.link, "_blank");
                                 }
                               }}
                             >
-                              <FaGooglePlay className="text-black h-8 w-8" />
-                              <span className="text-black text-lg font-semibold font-header">
+                              <FaGooglePlay className="text-black h-5 w-5 md:h-8 md:w-8" />
+                              <span className="text-black text-sm md:text-lg font-semibold font-header">
                                 google play
                               </span>
                             </div>
                             <div
-                              className="flex flex-row items-center space-x-3  cursor-pointer"
+                              className="flex flex-row items-center space-x-2 md:space-x-3 cursor-pointer bg-gray-200 rounded-md p-2 hover:bg-gray-300 border border-gray-300 shadow-md"
                               onClick={() => {
                                 if (item.secondLink) {
                                   window.open(item.secondLink, "_blank");
                                 }
                               }}
                             >
-                              <FaAppStoreIos className="text-black h-8 w-8" />
-                              <span className="text-black text-lg font-semibold font-header ">
+                              <FaAppStoreIos className="text-black h-5 w-5 md:h-8 md:w-8" />
+                              <span className="text-black text-sm md:text-lg font-semibold font-header">
                                 app store
                               </span>
                             </div>

@@ -226,31 +226,17 @@ const ContactSection = () => {
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-12 gap-3 md:gap-5">
-                <div className="col-span-6 mb-5">
-                  <input
-                    type="text"
-                    name="companyName"
-                    id="companyName"
-                    value={formData.companyName}
-                    onChange={handleChange}
-                    placeholder={t("company_name")}
-                    className="w-full p-2 border border-gray-600 rounded h-10 outline-none bg-transparent focus:border-primary text-[15px]"
-                  />
-                </div>
 
-                <div className="col-span-6 mb-5">
-                  <input
-                    type="text"
-                    name="mobile"
-                    id="mobile"
-                    value={formData.mobile}
-                    onChange={handleChange}
-                    placeholder={t("your_mobile_number")}
-                    required
-                    className="w-full p-2 border border-gray-600 rounded h-10 outline-none bg-transparent focus:border-primary text-[15px]"
-                  />
-                </div>
+              <div className="col-span-6 mb-5">
+                <input
+                  type="text"
+                  name="companyName"
+                  id="companyName"
+                  value={formData.companyName}
+                  onChange={handleChange}
+                  placeholder={t("company_name")}
+                  className="w-full p-2 border border-gray-600 rounded h-10 outline-none bg-transparent focus:border-primary text-[15px]"
+                />
               </div>
               <div className="lg:col-span-6 mb-5">
                 <input
@@ -267,14 +253,16 @@ const ContactSection = () => {
               <div className="lg:col-span-6 mb-5">
                 <input
                   type="text"
-                  name="companyName"
-                  id="companyName"
-                  value={formData.companyName}
+                  name="mobile"
+                  id="mobile"
+                  value={formData.mobile}
                   onChange={handleChange}
-                  placeholder={t("company_name")}
+                  placeholder={t("your_mobile_number")}
+                  required
                   className="w-full p-2 border border-gray-600 rounded h-10 outline-none bg-transparent focus:border-primary text-[15px]"
                 />
               </div>
+
               <div className="lg:col-span-6 mb-5">
                 <textarea
                   name="message"
