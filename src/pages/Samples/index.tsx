@@ -58,6 +58,7 @@ const SamplesPage = () => {
   const handleVideoPause = () => {
     setCurrentVideoIndex(null);
   };
+
   const { state } = useLocation();
   const {
     data: category,
@@ -227,10 +228,28 @@ const SamplesPage = () => {
                                 {sample.videos.map(
                                   (item: VideoInfo, index: number) => (
                                     <div className="relative mx-auto w-full md:w-1/2  h-[300px] md:h-[500px]">
-                                      <ReactPlayer
+                                      {/* <ReactPlayer
                                         key={index}
                                         url={item.link}
                                         controls
+                                        className="w-full h-full"
+                                        playing={currentVideoIndex === index}
+                                        volume={0.8}
+                                        playbackRate={1.0}
+                                        loop={false}
+                                        width="100%"
+                                        height="100%"
+                                        style={{
+                                          maxWidth: "100%",
+                                          maxHeight: "100%",
+                                        }}
+                                        onPlay={() => handleVideoPlay(index)}
+                                        onPause={handleVideoPause}
+                                      /> */}
+                                      <ReactPlayer
+                                        url={item.link}
+                                        controls
+                                        playing={currentVideoIndex === index}
                                         className="w-full h-full"
                                         volume={0.8}
                                         playbackRate={1.0}
