@@ -6,8 +6,8 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FaAppStoreIos, FaGooglePlay } from "react-icons/fa";
-import ReactPlayer from "react-player";
-import { useState } from "react";
+// import ReactPlayer from "react-player";
+// import { useState } from "react";
 
 const OurProjects = () => {
   const { data: categories, isLoading, isError } = useGetCategoriesQuery();
@@ -39,22 +39,22 @@ const OurProjects = () => {
       items: 1,
     },
   };
-  const [currentVideoIndex, setCurrentVideoIndex] = useState<number | null>(
-    null
-  );
+  // const [currentVideoIndex, setCurrentVideoIndex] = useState<number | null>(
+  //   null
+  // );
 
-  const handleVideoPlay = (index: number) => {
-    // Stop the previous video if it's playing
-    if (currentVideoIndex !== null && currentVideoIndex !== index) {
-      setCurrentVideoIndex(null);
-    }
-    // Set the current video index
-    setCurrentVideoIndex(index);
-  };
+  // const handleVideoPlay = (index: number) => {
+  //   // Stop the previous video if it's playing
+  //   if (currentVideoIndex !== null && currentVideoIndex !== index) {
+  //     setCurrentVideoIndex(null);
+  //   }
+  //   // Set the current video index
+  //   setCurrentVideoIndex(index);
+  // };
 
-  const handleVideoPause = () => {
-    setCurrentVideoIndex(null);
-  };
+  // const handleVideoPause = () => {
+  //   setCurrentVideoIndex(null);
+  // };
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching data</div>;
@@ -281,7 +281,7 @@ const OurProjects = () => {
                               description: categoryName,
                             }))}
                           />
-                          <div>
+                          {/* <div>
                             {samples.videos && samples.videos.length > 0 && (
                               <Carousel
                                 responsive={{
@@ -337,7 +337,7 @@ const OurProjects = () => {
                                 )}
                               </Carousel>
                             )}
-                          </div>
+                          </div> */}
                         </div>
                       )}
                     </div>
