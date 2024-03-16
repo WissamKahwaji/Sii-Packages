@@ -1,7 +1,7 @@
 import { IdParams } from "./type";
 import { useLocation, useParams } from "react-router-dom";
 import { useGetCategoryPackagesQuery } from "../../apis/packages/queries";
-import { SampleInfo, Samples } from "../../apis/packages/type";
+import { SampleInfo, Samples, VideoInfo } from "../../apis/packages/type";
 import ReactImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ContactSection from "../../components/home/ContactSection";
@@ -9,6 +9,9 @@ import { useTranslation } from "react-i18next";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FaAppStoreIos, FaGooglePlay } from "react-icons/fa";
+import ReactPlayer from "react-player";
+import { useState } from "react";
+
 const SamplesPage = () => {
   const { t, i18n } = useTranslation();
   const selectedLang = i18n.language;
@@ -39,13 +42,29 @@ const SamplesPage = () => {
       items: 1,
     },
   };
+  const [currentVideoIndex, setCurrentVideoIndex] = useState<number | null>(
+    null
+  );
 
+  const handleVideoPlay = (index: number) => {
+    // Stop the previous video if it's playing
+    if (currentVideoIndex !== null && currentVideoIndex !== index) {
+      setCurrentVideoIndex(null);
+    }
+    // Set the current video index
+    setCurrentVideoIndex(index);
+  };
+
+  const handleVideoPause = () => {
+    setCurrentVideoIndex(null);
+  };
   const { state } = useLocation();
   const {
     data: category,
     isLoading,
     isError,
   } = useGetCategoryPackagesQuery(id);
+
   if (isLoading) return <div></div>;
   if (isError) return <div></div>;
 
@@ -187,7 +206,7 @@ const SamplesPage = () => {
                               : sample.name_ar}
                           </p>
                           <div className="mt-8">
-                            {sample.samples && (
+                            {sample.samples && sample.samples.length > 0 && (
                               <ReactImageGallery
                                 items={sample.samples.map(
                                   (item: SampleInfo) => ({
@@ -197,6 +216,38 @@ const SamplesPage = () => {
                                   })
                                 )}
                               />
+                            )}
+                          </div>
+                          <div>
+                            {sample.videos && sample.videos.length > 0 && (
+                              <Carousel
+                                responsive={RESPONSIVE}
+                                className="pb-4 "
+                              >
+                                {sample.videos.map(
+                                  (item: VideoInfo, index: number) => (
+                                    <div className="relative mx-auto w-full md:w-1/2  h-[300px] md:h-[500px]">
+                                      <ReactPlayer
+                                        key={index}
+                                        url={item.link}
+                                        controls
+                                        className="w-full h-full"
+                                        volume={0.8}
+                                        playbackRate={1.0}
+                                        loop={false}
+                                        width="100%"
+                                        height="100%"
+                                        style={{
+                                          maxWidth: "100%",
+                                          maxHeight: "100%",
+                                        }}
+                                        onPlay={() => handleVideoPlay(index)}
+                                        onPause={handleVideoPause}
+                                      />
+                                    </div>
+                                  )
+                                )}
+                              </Carousel>
                             )}
                           </div>
                         </div>

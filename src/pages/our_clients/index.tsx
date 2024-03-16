@@ -32,7 +32,7 @@ const OurClients = () => {
           {t("our_clients_bio")}
         </p>
       </div>
-      <div className="grid grid-flow-row grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-3/4 mx-auto">
+      <div className="grid grid-flow-row grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 space-y-2 w-3/4 mx-auto">
         {clientsData.map((client: ClientsModel, index: number) => (
           <motion.div
             key={index}
@@ -50,7 +50,7 @@ const OurClients = () => {
               />
             </div>
 
-            <p className="h-3 md:h-12 text-center font-semibold font-serif text-xs text-primary md:text-lg uppercase">
+            <p className="h-3 md:h-12 text-center font-semibold font-serif text-[10px] text-primary md:text-lg uppercase">
               {client.name}
             </p>
           </motion.div>

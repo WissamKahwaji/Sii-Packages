@@ -37,12 +37,16 @@ export type Samples = {
   name_ar: string;
 
   samples: SampleInfo[];
+  videos: VideoInfo[];
 };
 
 export type SampleInfo = {
   img: string;
   link: string;
   secondLink: string;
+};
+export type VideoInfo = {
+  link: string;
 };
 
 export type SubCategory = {
