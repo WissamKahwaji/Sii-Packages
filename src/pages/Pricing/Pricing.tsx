@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetCategoryPackagesQuery } from "../../apis/packages/queries";
 import Carousel from "react-multi-carousel";
@@ -15,7 +15,13 @@ const Pricing: React.FC = () => {
 
   const [showModal, setShowModal] = useState<number | null>(null);
   const dotListClass = "absolute top-0  transform  h-10";
+  const contactSectionRef = useRef<HTMLDivElement>(null);
 
+  const scrollToContact = () => {
+    if (contactSectionRef.current) {
+      contactSectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   const RESPONSIVE = {
     xxl: {
       breakpoint: { max: 5000, min: 1536 },
@@ -132,9 +138,18 @@ const Pricing: React.FC = () => {
           {selectedLang === "en" ? category?.name_en : category?.name_ar}
         </h2>
         {category?.bio_en && (
-          <p className="text-lg md:text-2xl text-gray-500 font-body leading-7 mb-5 max-w-[700px] mx-auto">
-            {selectedLang === "en" ? category.bio_en : category.bio_ar}
-          </p>
+          <div>
+            <a
+              href="#"
+              className="block text-base md:text-2xl text-secondary font-body leading-7 mb-5 max-w-[700px] mx-auto bg-white border border-primary rounded-lg shadow-md p-6 transition duration-300 ease-in-out hover:bg-gray-100 hover:border-gray-400 hover:shadow-lg"
+              onClick={e => {
+                e.preventDefault();
+                scrollToContact();
+              }}
+            >
+              {selectedLang === "en" ? category.bio_en : category.bio_ar}
+            </a>
+          </div>
         )}
         <p className="text-lg md:text-2xl text-secondary font-body leading-7 max-w-[700px] mx-auto">
           {t("pick_your_perfect_plan")}
@@ -552,7 +567,9 @@ const Pricing: React.FC = () => {
       ) : (
         <></>
       )}
-      <ContactSection />
+      <div ref={contactSectionRef}>
+        <ContactSection />
+      </div>
     </div>
   );
 };

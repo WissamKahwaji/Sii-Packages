@@ -50,7 +50,7 @@ const OurClients = () => {
               />
             </div>
 
-            <p className="h-3 md:h-12 text-center font-semibold font-serif text-[10px] text-primary md:text-lg uppercase">
+            <p className="h-3 md:h-12 text-center font-semibold font-serif text-[9px] text-primary md:text-lg uppercase">
               {client.name}
             </p>
           </motion.div>

@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useGetCategoriesQuery } from "../../apis/packages/queries";
-import { SampleInfo, VideoInfo } from "../../apis/packages/type";
+import { SampleInfo } from "../../apis/packages/type";
 import ReactImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import Carousel from "react-multi-carousel";
@@ -59,38 +59,52 @@ const OurProjects = () => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching data</div>;
 
-  const groupedSamples: {
-    [key: string]: { samples: SampleInfo[]; videos: VideoInfo[] };
-  } = {};
+  // const groupedSamples: {
+  //   [key: string]: { samples: SampleInfo[]; videos: VideoInfo[] };
+  // } = {};
 
+  const groupedSamples: {
+    [key: string]: SampleInfo[];
+  } = {};
   categories?.forEach(category => {
     const categoryName =
       selectedLang === "en" ? category.name_en : category.name_ar;
-
-    if (category.hasSubcategories === true) {
-      category.subcategories.forEach(subcategory => {
-        subcategory.samples.forEach(sample => {
-          if (!groupedSamples[categoryName]) {
-            groupedSamples[categoryName] = { samples: [], videos: [] };
-          }
-          if (sample.videos && sample.videos.length > 0) {
-            groupedSamples[categoryName].videos.push(...sample.videos);
-          }
-          groupedSamples[categoryName].samples.push(...sample.samples);
-        });
-      });
-    } else {
-      category.samples.forEach(sample => {
-        if (!groupedSamples[categoryName]) {
-          groupedSamples[categoryName] = { samples: [], videos: [] };
-        }
-        if (sample.videos && sample.videos.length > 0) {
-          groupedSamples[categoryName].videos.push(...sample.videos);
-        }
-        groupedSamples[categoryName].samples.push(...sample.samples);
-      });
-    }
+    category.samples.forEach(sample => {
+      if (!groupedSamples[categoryName]) {
+        groupedSamples[categoryName] = [];
+      }
+      groupedSamples[categoryName].push(...sample.samples);
+    });
   });
+
+  // categories?.forEach(category => {
+  //   const categoryName =
+  //     selectedLang === "en" ? category.name_en : category.name_ar;
+
+  //   if (category.hasSubcategories === true) {
+  //     category.subcategories.forEach(subcategory => {
+  //       subcategory.samples.forEach(sample => {
+  //         if (!groupedSamples[categoryName]) {
+  //           groupedSamples[categoryName] = { samples: [], videos: [] };
+  //         }
+  //         if (sample.videos && sample.videos.length > 0) {
+  //           groupedSamples[categoryName].videos.push(...sample.videos);
+  //         }
+  //         groupedSamples[categoryName].samples.push(...sample.samples);
+  //       });
+  //     });
+  //   } else {
+  //     category.samples.forEach(sample => {
+  //       if (!groupedSamples[categoryName]) {
+  //         groupedSamples[categoryName] = { samples: [], videos: [] };
+  //       }
+  //       if (sample.videos && sample.videos.length > 0) {
+  //         groupedSamples[categoryName].videos.push(...sample.videos);
+  //       }
+  //       groupedSamples[categoryName].samples.push(...sample.samples);
+  //     });
+  //   }
+  // });
 
   return (
     <div className="w-full bg-gray-100 py-8">
@@ -140,7 +154,7 @@ const OurProjects = () => {
                     autoPlay
                     className=""
                   >
-                    {samples.samples.map((item: SampleInfo, idx: number) => (
+                    {samples.map((item: SampleInfo, idx: number) => (
                       <div
                         key={idx}
                         className="relative overflow-hidden object-fill rounded-md border border-primary hover:shadow-lg cursor-pointer md:mx-2 h-[240px] md:h-[370px]"
@@ -173,7 +187,7 @@ const OurProjects = () => {
                     autoPlay
                     className="pb-4"
                   >
-                    {samples.samples.map((item: SampleInfo, idx: number) => (
+                    {samples.map((item: SampleInfo, idx: number) => (
                       <div
                         key={idx}
                         className="flex flex-col object-fill  rounded-md border border-primary hover:shadow-lg md:mx-2 h-[340px] md:h-[450px]"
@@ -275,7 +289,7 @@ const OurProjects = () => {
                       {samples && (
                         <div>
                           <ReactImageGallery
-                            items={samples.samples.map((item: SampleInfo) => ({
+                            items={samples.map((item: SampleInfo) => ({
                               original: item.img,
                               thumbnail: item.img,
                               description: categoryName,

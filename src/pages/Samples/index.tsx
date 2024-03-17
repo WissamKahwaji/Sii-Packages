@@ -111,7 +111,7 @@ const SamplesPage = () => {
                         <img
                           src={item.img}
                           alt={sample.name}
-                          className="w-full h-full object-cover transition-transform transform hover:scale-105"
+                          className="w-full h-full object-contain transition-transform transform hover:scale-105"
                         />
                         {item.link && (
                           <div className="absolute inset-0 bg-black opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
