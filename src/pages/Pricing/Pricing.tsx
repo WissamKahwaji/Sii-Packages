@@ -554,11 +554,7 @@ const Pricing: React.FC = () => {
       {category?.samples && category?.samples.length > 0 ? (
         <div className="text-center my-6">
           <button
-            onClick={() =>
-              navigate(`samples/${category?._id}`, {
-                state: { subCategory: activeTab },
-              })
-            }
+            onClick={() => navigate(`samples/${activeTab?._id}`)}
             className="bg-transparent shadow-lg border border-secondary font-header font-bold w-3/4 md:w-3/6 text-gray-900 py-4 px-6 rounded-lg hover:border-primary transform transition-transform hover:scale-105 duration-300 delay-100 hover:animate-pulse"
           >
             {t("show_samples")}

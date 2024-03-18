@@ -1,5 +1,5 @@
 import { IdParams } from "./type";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useGetCategoryPackagesQuery } from "../../apis/packages/queries";
 import { SampleInfo, Samples, VideoInfo } from "../../apis/packages/type";
 import ReactImageGallery from "react-image-gallery";
@@ -15,7 +15,7 @@ import { useState } from "react";
 const SamplesPage = () => {
   const { t, i18n } = useTranslation();
   const selectedLang = i18n.language;
-  const { id } = useParams<IdParams>();
+  const { categoryId, id } = useParams<IdParams>();
   const RESPONSIVE = {
     xxl: {
       breakpoint: { max: 5000, min: 1536 },
@@ -59,12 +59,15 @@ const SamplesPage = () => {
     setCurrentVideoIndex(null);
   };
 
-  const { state } = useLocation();
   const {
     data: category,
     isLoading,
     isError,
-  } = useGetCategoryPackagesQuery(id);
+  } = useGetCategoryPackagesQuery(categoryId);
+
+  const samples =
+    category?.subcategories &&
+    category.subcategories.find(c => c._id?.toString() === id);
 
   if (isLoading) return <div></div>;
   if (isError) return <div></div>;
@@ -75,8 +78,8 @@ const SamplesPage = () => {
         <h2 className="text-3xl sm:text-4xl font-semibold font-header mb-5 text-primary uppercase">
           {category?.hasSubcategories === true
             ? selectedLang === "en"
-              ? state.subCategory.name_en
-              : state.subCategory.name_ar
+              ? samples?.name_en
+              : samples?.name_ar
             : selectedLang === "en"
             ? category?.name_en
             : category?.name_ar}
@@ -197,38 +200,30 @@ const SamplesPage = () => {
             <>
               {category?.hasSubcategories === true ? (
                 <>
-                  {state.subCategory.samples &&
-                    state.subCategory.samples.map(
-                      (sample: Samples, index: number) => (
-                        <div key={index}>
-                          <p className="font-header text-base md:text-2xl text-secondary font-semibold uppercase">
-                            {selectedLang === "en"
-                              ? sample.name
-                              : sample.name_ar}
-                          </p>
-                          <div className="mt-8">
-                            {sample.samples && sample.samples.length > 0 && (
-                              <ReactImageGallery
-                                items={sample.samples.map(
-                                  (item: SampleInfo) => ({
-                                    original: item.img,
-                                    thumbnail: item.img,
-                                    description: sample.name,
-                                  })
-                                )}
-                              />
-                            )}
-                          </div>
-                          <div>
-                            {sample.videos && sample.videos.length > 0 && (
-                              <Carousel
-                                responsive={RESPONSIVE}
-                                className="pb-4 "
-                              >
-                                {sample.videos.map(
-                                  (item: VideoInfo, index: number) => (
-                                    <div className="relative mx-auto w-full md:w-1/2  h-[300px] md:h-[500px]">
-                                      {/* <ReactPlayer
+                  {samples?.samples &&
+                    samples?.samples.map((sample: Samples, index: number) => (
+                      <div key={index}>
+                        <p className="font-header text-base md:text-2xl text-secondary font-semibold uppercase">
+                          {selectedLang === "en" ? sample.name : sample.name_ar}
+                        </p>
+                        <div className="mt-8">
+                          {sample.samples && sample.samples.length > 0 && (
+                            <ReactImageGallery
+                              items={sample.samples.map((item: SampleInfo) => ({
+                                original: item.img,
+                                thumbnail: item.img,
+                                description: sample.name,
+                              }))}
+                            />
+                          )}
+                        </div>
+                        <div>
+                          {sample.videos && sample.videos.length > 0 && (
+                            <Carousel responsive={RESPONSIVE} className="pb-4 ">
+                              {sample.videos.map(
+                                (item: VideoInfo, index: number) => (
+                                  <div className="relative mx-auto w-full md:w-1/2  h-[300px] md:h-[500px]">
+                                    {/* <ReactPlayer
                                         key={index}
                                         url={item.link}
                                         controls
@@ -246,32 +241,31 @@ const SamplesPage = () => {
                                         onPlay={() => handleVideoPlay(index)}
                                         onPause={handleVideoPause}
                                       /> */}
-                                      <ReactPlayer
-                                        url={item.link}
-                                        controls
-                                        playing={currentVideoIndex === index}
-                                        className="w-full h-full"
-                                        volume={0.8}
-                                        playbackRate={1.0}
-                                        loop={false}
-                                        width="100%"
-                                        height="100%"
-                                        style={{
-                                          maxWidth: "100%",
-                                          maxHeight: "100%",
-                                        }}
-                                        onPlay={() => handleVideoPlay(index)}
-                                        onPause={handleVideoPause}
-                                      />
-                                    </div>
-                                  )
-                                )}
-                              </Carousel>
-                            )}
-                          </div>
+                                    <ReactPlayer
+                                      url={item.link}
+                                      controls
+                                      playing={currentVideoIndex === index}
+                                      className="w-full h-full"
+                                      volume={0.8}
+                                      playbackRate={1.0}
+                                      loop={false}
+                                      width="100%"
+                                      height="100%"
+                                      style={{
+                                        maxWidth: "100%",
+                                        maxHeight: "100%",
+                                      }}
+                                      onPlay={() => handleVideoPlay(index)}
+                                      onPause={handleVideoPause}
+                                    />
+                                  </div>
+                                )
+                              )}
+                            </Carousel>
+                          )}
                         </div>
-                      )
-                    )}
+                      </div>
+                    ))}
                 </>
               ) : (
                 <>
