@@ -30,7 +30,7 @@ const Routes = () => {
         <Route path="packages" element={<OurPackages />} />
         <Route path="packages/pricing/:id" element={<Pricing />} />
         <Route
-          path="packages/pricing/:id/samples/:id"
+          path="packages/pricing/:categoryId/samples/:id"
           element={<SamplesPage />}
         />
         <Route path="about-us" element={<AboutUs />} />
