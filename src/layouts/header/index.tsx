@@ -7,13 +7,13 @@ import {
   FiLinkedin,
   FiMail,
   FiPhone,
-  FiTwitter,
 } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
 import { MdWhatsapp } from "react-icons/md";
 import { useState } from "react";
 import { AiOutlineCloseSquare, AiOutlineMenu } from "react-icons/ai";
 import { FaEnvelope, FaPhoneAlt, FaSnapchat } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -51,7 +51,7 @@ const Navbar = () => {
       link: "https://t.snapchat.com/O0pjBC6s",
     },
     {
-      icon: <FiTwitter className="h-6 w-6" />,
+      icon: <BsTwitterX className="h-6 w-6" />,
       link: "https://twitter.com/siimedia",
     },
   ];

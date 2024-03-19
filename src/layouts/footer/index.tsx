@@ -5,9 +5,10 @@ import {
   FiPhone,
   FiInstagram,
   FiLinkedin,
-  FiTwitter,
   FiLink,
 } from "react-icons/fi";
+import { BsTwitterX } from "react-icons/bs";
+
 import { Link } from "react-router-dom";
 import logo_black from "../../assets/logo_black.png";
 import { MdOutlineFacebook, MdOutlineWhatsapp } from "react-icons/md";
@@ -148,7 +149,7 @@ const Footer: React.FC = () => {
               <FaSnapchat className="text-2xl text-primary hover:text-secondary transition-colors duration-300" />
             </Link>
             <Link to="https://twitter.com/siimedia" className="mx-2">
-              <FiTwitter className="text-2xl text-primary hover:text-secondary transition-colors duration-300" />
+              <BsTwitterX className="text-2xl text-primary hover:text-secondary transition-colors duration-300" />
             </Link>
           </div>
         </div>
