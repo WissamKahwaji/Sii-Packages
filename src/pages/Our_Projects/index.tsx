@@ -196,7 +196,7 @@ const OurProjects = () => {
                             category.samples.map(
                               sample =>
                                 sample.samples && (
-                                  <div>
+                                  <div className="mb-8 md:mb-20">
                                     <ReactImageGallery
                                       items={sample.samples.map(
                                         (item: SampleInfo) => ({
