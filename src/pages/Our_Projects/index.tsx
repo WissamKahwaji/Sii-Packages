@@ -77,7 +77,9 @@ const OurProjects = () => {
                       style={{ direction: "ltr" }}
                       className="font-header text-sm md:text-2xl text-secondary font-semibold uppercase"
                     >
-                      {category.name_en}
+                      {selectedLang === "en"
+                        ? category.name_en
+                        : category.name_ar}
                     </p>
                   </div>
                   <div className="flex flex-col">
