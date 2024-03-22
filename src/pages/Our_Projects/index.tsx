@@ -136,17 +136,20 @@ const CategorySection: React.FC<CategorySectionProps> = ({ category }) => {
   };
 
   return (
-    <div className="my-5">
-      <div className="bg-slate-200 w-fit p-4 rounded-xl shadow-lg mb-3">
-        <p
-          style={{ direction: "ltr" }}
-          className="font-header text-sm md:text-2xl text-secondary font-semibold uppercase"
-        >
-          {selectedLang === "en" ? category.name_en : category.name_ar}
-        </p>
+    category.samples &&
+    category.samples.length > 0 && (
+      <div className="my-5">
+        <div className="bg-slate-200 w-fit p-4 rounded-xl shadow-lg mb-3">
+          <p
+            style={{ direction: "ltr" }}
+            className="font-header text-sm md:text-2xl text-secondary font-semibold uppercase"
+          >
+            {selectedLang === "en" ? category.name_en : category.name_ar}
+          </p>
+        </div>
+        <div className="flex flex-col">{renderCategoryContent()}</div>
       </div>
-      <div className="flex flex-col">{renderCategoryContent()}</div>
-    </div>
+    )
   );
 };
 
