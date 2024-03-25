@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import {
   FiMapPin,
   FiMail,
@@ -26,7 +28,15 @@ const Footer: React.FC = () => {
     mobile: "",
     message: "",
   });
+  const [mobileError, setMobileError] = useState("");
 
+  const handlePhoneChange = (mobile: string) => {
+    setFormData(prevData => ({
+      ...prevData,
+      mobile,
+    }));
+    setMobileError("");
+  };
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -38,6 +48,15 @@ const Footer: React.FC = () => {
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Validate mobile number
+    if (
+      !formData.mobile ||
+      !/^\+?\d+$/.test(formData.mobile) ||
+      formData.mobile.length <= 10
+    ) {
+      setMobileError("Invalid mobile number");
+      return;
+    }
     console.log(formData);
     try {
       const response = await fetch(`${baseUrl}/about/send-email`, {
@@ -214,7 +233,7 @@ const Footer: React.FC = () => {
               required
               className="w-full mb-4 p-3 rounded-lg border border-gray-400 bg-gray-200 text-gray-800 focus:outline-none focus:border-primary"
             />
-            <input
+            {/* <input
               type="text"
               id="mobile"
               name="mobile"
@@ -223,7 +242,30 @@ const Footer: React.FC = () => {
               placeholder={t("your_mobile_number")}
               required
               className="w-full mb-4 p-3 rounded-lg border border-gray-400 bg-gray-200 text-gray-800 focus:outline-none focus:border-primary"
-            />
+            /> */}
+            <div className="mb-4">
+              <PhoneInput
+                country={"ae"}
+                value={formData.mobile}
+                onChange={handlePhoneChange}
+                inputProps={{ required: true, autoFocus: true }}
+                placeholder={t("your_mobile_number")}
+                inputStyle={{
+                  border: "1px solid #9CA3AF",
+                  borderRadius: "0.375rem",
+                  fontSize: "15px",
+                  outline: "none",
+                  backgroundColor: "#E5E7EB",
+                  height: "45PX",
+                }}
+                buttonStyle={{
+                  margin: 3,
+                }}
+              />
+              {mobileError && (
+                <p className="text-red-500 text-sm">{mobileError}</p>
+              )}
+            </div>
             <textarea
               placeholder={t("your_message")}
               id="message"

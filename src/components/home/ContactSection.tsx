@@ -1,16 +1,6 @@
 import React, { useState } from "react";
-// import {
-//   FaFacebookSquare,
-//   FaInstagramSquare,
-//   FaWhatsappSquare,
-//   FaLinkedin,
-//   FaPhone,
-//   FaSnapchatSquare,
-//   FaTiktok,
-//   FaTwitterSquare,
-// } from "react-icons/fa";
-// import { MdEmail } from "react-icons/md";
-// import { Link } from "react-router-dom";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import baseUrl from "../../constants/domain";
 import { useTranslation } from "react-i18next";
 
@@ -25,6 +15,9 @@ const ContactSection = () => {
     mobile: "",
     message: "",
   });
+
+  const [mobileError, setMobileError] = useState("");
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -35,8 +28,27 @@ const ContactSection = () => {
     }));
   };
 
+  const handlePhoneChange = (mobile: string) => {
+    setFormData(prevData => ({
+      ...prevData,
+      mobile,
+    }));
+    setMobileError("");
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate mobile number
+    if (
+      !formData.mobile ||
+      !/^\+?\d+$/.test(formData.mobile) ||
+      formData.mobile.length <= 10
+    ) {
+      setMobileError("Invalid mobile number");
+      return;
+    }
+
     console.log(formData);
     try {
       const response = await fetch(`${baseUrl}/about/send-email`, {
@@ -90,111 +102,6 @@ const ContactSection = () => {
           </p>
         </div>
         <div className="mx-auto md:mx-auto my-5 md:my-10 w-[90%] md:w-1/2">
-          {/* <div className="flex flex-col gap-8 bg-gray-background md:px-4">
-            <div>
-              <p className="mb-6 text-2xl font-semibold font-header capitalize text-primary">
-                {t("location")}
-              </p>
-              <p className="font-semibold font-body text-gray-500 text-sm lg:text-lg  ">
-                {t("United Arab Emirates - Dubai")}
-              </p>
-            </div>
-            <div>
-              <p className="mb-6 text-2xl font-semibold font-header capitalize text-primary">
-                {t("contact_info")}
-              </p>
-              <ul className="flex flex-col justify-center gap-4">
-                <li>
-                  <p
-                    className="flex items-center gap-2  font-semibold cursor-pointer w-max"
-                    onClick={() => {
-                      window.location.href = `mailto:info@siimedia.net`;
-                    }}
-                  >
-                    <MdEmail />
-                    <span>info@siimedia.net</span>
-                  </p>
-                </li>
-
-                <li>
-                  <p
-                    className=" flex items-center gap-2 font-semibold cursor-pointer w-max"
-                    onClick={() => {
-                      window.location.href = `tel:+971545615757`;
-                    }}
-                  >
-                    <FaPhone />
-                    <span style={{ direction: "ltr" }}>+971 54 561 5757</span>
-                  </p>
-                </li>
-                <li>
-                  <p
-                    className="flex items-center gap-2 font-semibold cursor-pointer w-max"
-                    onClick={() => {
-                      window.location.href = `tel:+971542998757`;
-                    }}
-                  >
-                    <FaPhone />
-                    <span style={{ direction: "ltr" }}>+971 54 299 8757</span>
-                  </p>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <p className="mb-6 text-2xl font-semibold font-header capitalize text-primary">
-                {t("social media")}
-              </p>
-              <ul className="mb-2 flex gap-2">
-                <li>
-                  <Link to={`https://wa.me/+971542998757`} target="_blank">
-                    <FaWhatsappSquare className="h-8 w-8 text-gray-500 hover:text-primary transition-transform hover:scale-105 md:h-12 md:w-12" />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="https://www.facebook.com/SiiMedia.ae"
-                    target="_blank"
-                  >
-                    <FaFacebookSquare className="h-8 w-8 text-gray-500 hover:text-primary transition-transform hover:scale-105 md:h-12 md:w-12" />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="https://www.instagram.com/siimedia/"
-                    target="_blank"
-                  >
-                    <FaInstagramSquare className="h-8 w-8 text-gray-500 hover:text-primary transition-transform hover:scale-105 md:h-12 md:w-12" />
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="https://www.linkedin.com/company/sii-media"
-                    target="_blank"
-                  >
-                    <FaLinkedin className="h-8 w-8 text-gray-500 hover:text-primary transition-transform hover:scale-105 md:h-12 md:w-12" />
-                  </Link>
-                </li>
-              </ul>
-              <ul className="mb-2 flex gap-2">
-                <li>
-                  <Link to="https://t.snapchat.com/O0pjBC6s" target="_blank">
-                    <FaSnapchatSquare className="h-8 w-8 text-gray-500 hover:text-primary transition-transform hover:scale-105 md:h-12 md:w-12" />
-                  </Link>
-                </li>{" "}
-                <li>
-                  <Link to="https://twitter.com/siimedia" target="_blank">
-                    <FaTwitterSquare className="h-8 w-8 text-gray-500 hover:text-primary transition-transform hover:scale-105 md:h-12 md:w-12" />
-                  </Link>
-                </li>
-                <li>
-                  <Link to="https://www.tiktok.com/@siimedia" target="_blank">
-                    <FaTiktok className="h-8 w-8 text-gray-500 hover:text-primary transition-transform hover:scale-105 md:h-12 md:w-12" />
-                  </Link>
-                </li>
-              </ul>
-              <ul className="flex gap-2"></ul>
-            </div>
-          </div> */}
           <div className="border border-primary mt-2 md:mt-0 p-4 md:p-6 lg:p-8 rounded-lg">
             <h2 className="text-3xl font-semibold mb-4 font-header text-secondary">
               {t("contact_us")}
@@ -251,16 +158,27 @@ const ContactSection = () => {
                 />
               </div>
               <div className="lg:col-span-6 mb-5">
-                <input
-                  type="text"
-                  name="mobile"
-                  id="mobile"
+                <PhoneInput
+                  country={"ae"}
                   value={formData.mobile}
-                  onChange={handleChange}
+                  onChange={handlePhoneChange}
+                  inputProps={{ required: true, autoFocus: true }}
                   placeholder={t("your_mobile_number")}
-                  required
-                  className="w-full p-2 border border-gray-600 rounded h-10 outline-none bg-transparent focus:border-primary text-[15px]"
+                  inputStyle={{
+                    width: "100%",
+                    border: "1px solid #4B5563",
+                    borderRadius: "0.375rem",
+                    fontSize: "15px",
+                    outline: "none",
+                    backgroundColor: "transparent",
+                  }}
+                  buttonStyle={{
+                    margin: 3,
+                  }}
                 />
+                {mobileError && (
+                  <p className="text-red-500 text-sm">{mobileError}</p>
+                )}
               </div>
 
               <div className="lg:col-span-6 mb-5">

@@ -8,6 +8,9 @@ import { IdParams } from "./type";
 import baseUrl from "../../constants/domain";
 import { useTranslation } from "react-i18next";
 import PackageCard from "../../components/pricing/PackageCard";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+
 const Pricing: React.FC = () => {
   const { t, i18n } = useTranslation();
   const selectedLang = i18n.language;
@@ -56,6 +59,16 @@ const Pricing: React.FC = () => {
     email: "",
     mobile: "",
   });
+
+  const [mobileError, setMobileError] = useState("");
+  const handlePhoneChange = (mobile: string) => {
+    setFormData(prevData => ({
+      ...prevData,
+      mobile,
+    }));
+    setMobileError("");
+  };
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -68,6 +81,14 @@ const Pricing: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (
+      !formData.mobile ||
+      !/^\+?\d+$/.test(formData.mobile) ||
+      formData.mobile.length <= 10
+    ) {
+      setMobileError("Invalid mobile number");
+      return;
+    }
     console.log(formData);
     try {
       const response = await fetch(`${baseUrl}/about/request-package`, {
@@ -331,7 +352,7 @@ const Pricing: React.FC = () => {
                 >
                   {t("your_mobile_number")}
                 </label>
-                <input
+                {/* <input
                   type="text"
                   id="mobile"
                   name="mobile"
@@ -339,11 +360,30 @@ const Pricing: React.FC = () => {
                   onChange={handleChange}
                   required
                   className="border border-gray-300 rounded-md p-2 w-full"
+                /> */}
+                <PhoneInput
+                  country={"ae"}
+                  value={formData.mobile}
+                  onChange={handlePhoneChange}
+                  inputProps={{ required: true, autoFocus: true }}
+                  placeholder={t("your_mobile_number")}
+                  inputStyle={{
+                    width: "100%",
+                    border: "1px solid  #D1D5DB",
+                    borderRadius: "0.375rem",
+                    fontSize: "15px",
+                    outline: "none",
+                    backgroundColor: "transparent",
+                  }}
+                  buttonStyle={{
+                    margin: 3,
+                  }}
                 />
+                {mobileError && (
+                  <p className="text-red-500 text-sm">{mobileError}</p>
+                )}
               </div>
 
-              {/* Additional form fields (email, mobile number, etc.) */}
-              {/* Submit and cancel buttons */}
               <div className="flex justify-end">
                 <button
                   type="button"

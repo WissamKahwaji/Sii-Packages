@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import baseUrl from "../../constants/domain";
 import { useTranslation } from "react-i18next";
-
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 const ContactUs = () => {
   const { t } = useTranslation();
 
@@ -13,6 +14,14 @@ const ContactUs = () => {
     mobile: "",
     message: "",
   });
+  const [mobileError, setMobileError] = useState("");
+  const handlePhoneChange = (mobile: string) => {
+    setFormData(prevData => ({
+      ...prevData,
+      mobile,
+    }));
+    setMobileError("");
+  };
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -25,6 +34,14 @@ const ContactUs = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (
+      !formData.mobile ||
+      !/^\+?\d+$/.test(formData.mobile) ||
+      formData.mobile.length <= 10
+    ) {
+      setMobileError("Invalid mobile number");
+      return;
+    }
     console.log(formData);
     try {
       const response = await fetch(`${baseUrl}/about/send-email`, {
@@ -152,7 +169,7 @@ const ContactUs = () => {
                 />
               </div>
               <div className="col-span-6 mb-5">
-                <input
+                {/* <input
                   type="text"
                   name="mobile"
                   id="mobile"
@@ -161,7 +178,29 @@ const ContactUs = () => {
                   placeholder={t("your_mobile_number")}
                   required
                   className="w-full p-2 border border-gray-600 rounded h-10 outline-none bg-transparent focus:border-primary text-[15px]"
+                /> */}
+                <PhoneInput
+                  country={"ae"}
+                  value={formData.mobile}
+                  onChange={handlePhoneChange}
+                  inputProps={{ required: true, autoFocus: true }}
+                  placeholder={t("your_mobile_number")}
+                  inputStyle={{
+                    width: "100%",
+                    border: "1px solid #4B5563",
+                    borderRadius: "0.375rem",
+                    fontSize: "15px",
+                    outline: "none",
+                    backgroundColor: "transparent",
+                    height: "2.5rem",
+                  }}
+                  buttonStyle={{
+                    margin: 3,
+                  }}
                 />
+                {mobileError && (
+                  <p className="text-red-500 text-sm">{mobileError}</p>
+                )}
               </div>
 
               <div className="lg:col-span-6 mb-5">
