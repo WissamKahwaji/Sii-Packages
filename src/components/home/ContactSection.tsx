@@ -159,6 +159,7 @@ const ContactSection = () => {
               </div>
               <div className="lg:col-span-6 mb-5">
                 <PhoneInput
+                  containerStyle={{ direction: "ltr" }}
                   country={"ae"}
                   value={formData.mobile}
                   onChange={handlePhoneChange}
@@ -171,9 +172,11 @@ const ContactSection = () => {
                     fontSize: "15px",
                     outline: "none",
                     backgroundColor: "transparent",
+                    direction: "ltr",
                   }}
                   buttonStyle={{
                     margin: 3,
+                    direction: "ltr",
                   }}
                 />
                 {mobileError && (

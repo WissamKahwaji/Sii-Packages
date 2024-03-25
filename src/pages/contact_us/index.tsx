@@ -185,6 +185,7 @@ const ContactUs = () => {
                   onChange={handlePhoneChange}
                   inputProps={{ required: true, autoFocus: true }}
                   placeholder={t("your_mobile_number")}
+                  containerStyle={{ direction: "ltr" }}
                   inputStyle={{
                     width: "100%",
                     border: "1px solid #4B5563",
@@ -193,9 +194,11 @@ const ContactUs = () => {
                     outline: "none",
                     backgroundColor: "transparent",
                     height: "2.5rem",
+                    direction: "ltr",
                   }}
                   buttonStyle={{
                     margin: 3,
+                    direction: "ltr",
                   }}
                 />
                 {mobileError && (

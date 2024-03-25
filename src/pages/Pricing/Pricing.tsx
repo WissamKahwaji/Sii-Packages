@@ -374,9 +374,12 @@ const Pricing: React.FC = () => {
                     fontSize: "15px",
                     outline: "none",
                     backgroundColor: "transparent",
+                    direction: "ltr",
                   }}
+                  containerStyle={{ direction: "ltr" }}
                   buttonStyle={{
                     margin: 3,
+                    direction: "ltr",
                   }}
                 />
                 {mobileError && (

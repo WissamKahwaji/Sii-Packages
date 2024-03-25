@@ -250,6 +250,7 @@ const Footer: React.FC = () => {
                 onChange={handlePhoneChange}
                 inputProps={{ required: true, autoFocus: true }}
                 placeholder={t("your_mobile_number")}
+                containerStyle={{ direction: "ltr" }}
                 inputStyle={{
                   border: "1px solid #9CA3AF",
                   borderRadius: "0.375rem",
@@ -257,9 +258,11 @@ const Footer: React.FC = () => {
                   outline: "none",
                   backgroundColor: "#E5E7EB",
                   height: "45PX",
+                  direction: "ltr",
                 }}
                 buttonStyle={{
                   margin: 3,
+                  direction: "ltr",
                 }}
               />
               {mobileError && (
