@@ -139,8 +139,10 @@ const Pricing: React.FC = () => {
   } = useGetCategoryPackagesQuery(id);
 
   const [activeTab, setActiveTab] = useState(category?.subcategories[0]);
+
   useEffect(() => {
-    // Set active tab to the first subcategory when data is loaded
+    window.scrollTo(0, 0);
+
     if (
       category &&
       category.subcategories &&
