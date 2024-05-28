@@ -36,8 +36,8 @@ const Pricing: React.FC = () => {
   };
   const handleClickOnPackage = (name: string, index: number) => {
     ReactGA.event({
-      category: `${name} choosen package`,
-      action: `${name} choosen package Click`,
+      category: `${name}/${category?.name_en} choosen package`,
+      action: `${name}/${category?.name_en} choosen package Click`,
       label: name,
     });
     setShowModal(index);
