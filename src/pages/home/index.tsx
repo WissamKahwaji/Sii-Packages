@@ -1,10 +1,13 @@
 import BioSection from "../../components/home/BioSection";
 import OurServices from "../../components/home/OurServices";
 import ContactSection from "../../components/home/ContactSection";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import AboutSection from "../../components/home/AboutSection";
-
+import ReactGA from "react-ga4";
 const Home = () => {
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: "/", title: "Home Page" });
+  }, []);
   const contactSectionRef = useRef<HTMLDivElement>(null);
 
   const scrollToContact = () => {

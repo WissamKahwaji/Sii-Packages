@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import baseUrl from "../../constants/domain";
 import { useTranslation } from "react-i18next";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import ReactGA from "react-ga4";
+
 const ContactUs = () => {
   const { t } = useTranslation();
-
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: "/contact-us",
+      title: "contact-us Page",
+    });
+  }, []);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",

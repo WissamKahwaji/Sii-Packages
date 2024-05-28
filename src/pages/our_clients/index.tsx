@@ -2,12 +2,19 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useGetClientsQuery } from "../../apis/our_clients/queries";
 import { ClientsModel } from "../../apis/our_clients/type";
-
+import ReactGA from "react-ga4";
+import { useEffect } from "react";
 const OurClients = () => {
   const { t, i18n } = useTranslation();
   const selectedLang = i18n.language;
   const { data: clientsData, isLoading, isError } = useGetClientsQuery();
-
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: "/our-clients",
+      title: "our-clients Page",
+    });
+  }, []);
   if (isLoading) return <div>Loading...</div>;
   if (isError || !clientsData) return <div>Error...</div>;
 

@@ -10,9 +10,18 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FaAppStoreIos, FaGooglePlay } from "react-icons/fa";
 import ReactPlayer from "react-player";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ReactGA from "react-ga4";
 
 const SamplesPage = () => {
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: "/packages/pricing/:categoryId/samples/:id",
+      title: "Samples Page",
+    });
+  }, []);
+
   const { t, i18n } = useTranslation();
   const selectedLang = i18n.language;
   const { categoryId, id } = useParams<IdParams>();
