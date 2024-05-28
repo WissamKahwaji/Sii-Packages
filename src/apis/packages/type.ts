@@ -25,6 +25,7 @@ export type Category = {
   samples: Samples[];
   bio_en?: string;
   bio_ar?: string;
+  landingLing?: string;
 };
 
 export type Feature = {

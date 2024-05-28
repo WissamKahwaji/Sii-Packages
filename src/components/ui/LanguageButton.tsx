@@ -5,8 +5,11 @@ import { t } from "i18next";
 
 const LanguageButton = () => {
   const { i18n } = useTranslation();
+  console.log("LanguageButton", navigator.language.split("-")[0]);
   const storedLanguage = localStorage.getItem("selectedLanguage");
-  const [lang, setLang] = useState(storedLanguage || "en");
+  const [lang, setLang] = useState(
+    storedLanguage || navigator.language.split("-")[0] || "en"
+  ); // Default to 'en' if language is not available
   // const [initialized, setInitialized] = useState(false);
 
   // useEffect(() => {

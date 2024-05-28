@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import PackageCard from "../../components/pricing/PackageCard";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import linkIcon from "../../assets/external-link.png";
 
 const Pricing: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -174,7 +175,7 @@ const Pricing: React.FC = () => {
             </a>
           </div>
         )}
-        <p className="text-lg md:text-2xl text-secondary font-body leading-7 max-w-[700px] mx-auto">
+        <p className="text-lg md:text-2xl text-secondary font-body leading-7 max-w-[700px] mx-auto transform  animate-wiggle">
           {t("pick_your_perfect_plan")}
         </p>
       </div>
@@ -412,13 +413,26 @@ const Pricing: React.FC = () => {
         <div className="text-center my-6">
           <button
             onClick={() => navigate(`samples/${activeTab?._id}`)}
-            className="bg-transparent shadow-lg border border-secondary font-header font-bold w-3/4 md:w-3/6 text-gray-900 py-4 px-6 rounded-lg hover:border-primary transform transition-transform hover:scale-105 duration-300 delay-100 hover:animate-pulse"
+            className="bg-transparent shadow-lg border border-secondary font-header font-bold w-3/4 md:w-3/6 text-gray-900 py-4 px-6 rounded-lg hover:border-primary transform transition-transform hover:scale-105 duration-300 delay-100 animate-pulse"
           >
             {t("show_samples")}
           </button>
         </div>
       ) : (
         <></>
+      )}
+      {category?.landingLing && (
+        <div className="flex justify-center ">
+          <a
+            href={category.landingLing}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center bg-transparent border border-primary text-primary font-semibold mb-4 px-6 py-3 rounded-lg hover:bg-primary-dark hover:border-primary transform transition duration-300 hover:scale-105  animate-shake"
+          >
+            <span className="mr-2">{t("view_more_about_this_service")}</span>
+            <img src={linkIcon} alt="link" className="w-5 h-6" />
+          </a>
+        </div>
       )}
       <div ref={contactSectionRef}>
         <ContactSection />

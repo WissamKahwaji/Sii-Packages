@@ -3,6 +3,8 @@ import { useGetCategoriesQuery } from "../../apis/packages/queries";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import Lottie from "lottie-react";
+import serviceAnimation from "../../assets/service.json";
 
 const OurServices = () => {
   const { t, i18n } = useTranslation();
@@ -50,7 +52,12 @@ const OurServices = () => {
           {t("services_desc")}
         </p>
       </div>
-
+      <div className="bg-slate-200">
+        <Lottie
+          animationData={serviceAnimation}
+          className="w-full h-[300px] md:h-[400px] mb-12"
+        />
+      </div>
       <div className="flex justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
