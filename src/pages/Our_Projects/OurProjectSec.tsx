@@ -2,8 +2,17 @@ import { useGetCategoriesQuery } from "../../apis/packages/queries";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import ReactGA from "react-ga4";
+import { useEffect } from "react";
 
 const OurProjectSec = () => {
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: "/our-projects",
+      title: "our-projects Page",
+    });
+  }, []);
   const { data: categories, isLoading, isError } = useGetCategoriesQuery();
   const { t, i18n } = useTranslation();
   const selectedLang = i18n.language;

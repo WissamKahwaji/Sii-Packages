@@ -9,8 +9,18 @@ import { useTranslation } from "react-i18next";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FaAppStoreIos, FaGooglePlay } from "react-icons/fa";
+import ReactGA from "react-ga4";
+import { useEffect } from "react";
 
 const ProjectSamples = () => {
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: "/our-projects/:categoryId/samples/",
+      title: "Project Samples Page",
+    });
+  }, []);
+
   const { t, i18n } = useTranslation();
   const selectedLang = i18n.language;
   const { categoryId } = useParams<IdParams>();

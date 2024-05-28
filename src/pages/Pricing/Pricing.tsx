@@ -11,8 +11,16 @@ import PackageCard from "../../components/pricing/PackageCard";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import linkIcon from "../../assets/external-link.png";
+import ReactGA from "react-ga4";
 
 const Pricing: React.FC = () => {
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: "/packages/pricing/:id",
+      title: "pricing Page",
+    });
+  }, []);
   const { t, i18n } = useTranslation();
   const selectedLang = i18n.language;
   const { id } = useParams<IdParams>();
@@ -25,6 +33,14 @@ const Pricing: React.FC = () => {
     if (contactSectionRef.current) {
       contactSectionRef.current.scrollIntoView({ behavior: "smooth" });
     }
+  };
+  const handleClickOnPackage = (name: string, index: number) => {
+    ReactGA.event({
+      category: `${name} choosen package`,
+      action: "Click",
+      label: name,
+    });
+    setShowModal(index);
   };
   const RESPONSIVE = {
     xxl: {
@@ -211,7 +227,9 @@ const Pricing: React.FC = () => {
                       <PackageCard
                         index={index}
                         item={item}
-                        setShowModal={() => setShowModal(index)}
+                        setShowModal={() =>
+                          handleClickOnPackage(item.title_en, index)
+                        }
                       />
                     ))}
                   </Carousel>
@@ -251,7 +269,9 @@ const Pricing: React.FC = () => {
                   <PackageCard
                     index={index}
                     item={item}
-                    setShowModal={() => setShowModal(index)}
+                    setShowModal={() =>
+                      handleClickOnPackage(item.title_en, index)
+                    }
                   />
                 ))}
               </Carousel>
