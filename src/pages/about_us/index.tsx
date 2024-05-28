@@ -2,8 +2,16 @@ import { useTranslation } from "react-i18next";
 import { useGetAboutQuery } from "../../apis/about/queries";
 import AboutItem from "../../components/about-us/AboutItem";
 import ContactSection from "../../components/home/ContactSection";
-
+import ReactGA from "react-ga4";
+import { useEffect } from "react";
 const AboutUs = () => {
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: "/about-us",
+      title: "About-us Page",
+    });
+  }, []);
   const { t } = useTranslation();
   const { data: aboutData, isLoading, isError } = useGetAboutQuery();
 
