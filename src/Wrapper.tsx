@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import Routes from "./Routes";
 import ReactGA from "react-ga4";
 
-const TRACKING_ID = "G-XXXXXXXXX";
+const TRACKING_ID = "G-F9R513W9P6";
 
 ReactGA.initialize(TRACKING_ID);
 
