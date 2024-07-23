@@ -113,8 +113,15 @@ const ContactUs = () => {
               </p>
             </div>
             <div>
-              <iframe
+              {/* <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14441.802897644364!2d55.288398869188605!3d25.188018192405522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6831f6693c85%3A0xb5b269f7897f4978!2zT3BhbCBUb3dlciAtINin2YTYrtmE2YrYrCDYp9mE2KrYrNin2LHZiiAtINiv2KjZig!5e0!3m2!1sar!2sae!4v1709622847553!5m2!1sar!2sae"
+                width="600"
+                height="450"
+                className="w-full"
+                loading="lazy"
+              ></iframe> */}
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14442.157241247005!2d55.28449225477573!3d25.185028911501828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f682def25f457%3A0x3dd4c4097970950e!2z2KfZhNiu2YTZitisINin2YTYqtis2KfYsdmKIC0g2K_YqNmK!5e0!3m2!1sar!2sae!4v1721717189149!5m2!1sar!2sae"
                 width="600"
                 height="450"
                 className="w-full"
