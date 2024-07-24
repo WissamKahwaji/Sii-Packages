@@ -24,6 +24,7 @@ export default {
       },
       colors: {
         primary: "hsl(var(--primary))",
+        secondPrimary: "hsl(var(--secondPrimary))",
         secondary: "hsl(var(--secondary))",
         background: "hsl(var(--background))",
         seconBackground: "hsl(var(--seconBackground))",

@@ -12,13 +12,14 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import linkIcon from "../../assets/external-link.png";
 import ReactGA from "react-ga4";
+import LoadingPage from "../loadingPage/LoadingPage";
 
 const Pricing: React.FC = () => {
   useEffect(() => {
     ReactGA.send({
       hitType: "pageview",
-      page: "/packages/pricing/:id",
-      title: "pricing Page",
+      page: "/services/pricing/:id",
+      title: "services Page",
     });
   }, []);
   const { t, i18n } = useTranslation();
@@ -168,15 +169,27 @@ const Pricing: React.FC = () => {
       setActiveTab(category.subcategories[0]);
     }
   }, [category]);
-  if (isLoading) return <div></div>;
+  if (isLoading) return <LoadingPage />;
   if (isError) return <div></div>;
 
   return (
-    <div className="relative w-full bg-gray-100 pt-8">
+    <div className="relative w-full bg-white pt-8">
       <div className="text-center  mx-5 md:mx-0">
         <h2 className="text-3xl sm:text-4xl font-semibold font-header mb-5 text-primary">
           {selectedLang === "en" ? category?.name_en : category?.name_ar}
         </h2>
+        <div className="grid grid-cols-1 gap-x-10 md:grid-cols-2 md:w-[60%] w-full mx-auto mt-12 mb-8 md:mb-10 ">
+          <img
+            src={category?.serviceImage}
+            alt=""
+            className="md:w-auto md:h-full mb-2 md:mb-0"
+          />
+          <p className="text-lg font-semibold font-header text-secondary md:text-start pt-10">
+            {selectedLang === "en"
+              ? category?.description_en
+              : category?.description_ar}
+          </p>
+        </div>
         {category?.bio_en && (
           <div>
             <a
@@ -388,7 +401,7 @@ const Pricing: React.FC = () => {
                   country={"ae"}
                   value={formData.mobile}
                   onChange={handlePhoneChange}
-                  inputProps={{ required: true, autoFocus: true }}
+                  inputProps={{ required: true, autoFocus: false }}
                   placeholder={t("your_mobile_number")}
                   inputStyle={{
                     width: "100%",

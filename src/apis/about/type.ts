@@ -6,4 +6,6 @@ export type AboutInfo = {
   ourVision_ar: string;
   ourMission_ar: string;
   ourValues_ar: string;
+  ourGoals: string;
+  ourGoals_ar: string;
 };

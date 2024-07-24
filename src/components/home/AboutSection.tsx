@@ -9,9 +9,9 @@ const AboutSection = () => {
   if (isError) return <div></div>;
 
   return (
-    <section className="bg-gray-100 hidden md:block w-full py-8">
+    <section className="bg-gray-100 md:block w-full py-8">
       <div className="text-center">
-        <div className="sm:text-3xl text-2xl font-bold text-secondary mb-8">
+        <div className="sm:text-3xl hidden text-2xl font-bold text-secondary mb-8">
           {t("about")}{" "}
           <span className="text-primary font-header">{t("us")}</span>
         </div>
@@ -22,6 +22,8 @@ const AboutSection = () => {
           ourVision_ar={aboutData?.ourVision_ar ?? ""}
           ourMission_ar={aboutData?.ourMission_ar ?? ""}
           ourValues_ar={aboutData?.ourValues_ar ?? ""}
+          ourGoals={aboutData?.ourGoals ?? ""}
+          ourGoals_ar={aboutData?.ourGoals_ar ?? ""}
         />
       </div>
     </section>

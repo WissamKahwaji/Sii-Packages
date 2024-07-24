@@ -33,10 +33,10 @@ const Routes = () => {
           element={<ProjectSamples />}
         />
         <Route path="our-projects" element={<OurProjectSec />} />
-        <Route path="packages" element={<OurPackages />} />
-        <Route path="packages/pricing/:id" element={<Pricing />} />
+        <Route path="services" element={<OurPackages />} />
+        <Route path="services/pricing/:id" element={<Pricing />} />
         <Route
-          path="packages/pricing/:categoryId/samples/:id"
+          path="services/pricing/:categoryId/samples/:id"
           element={<SamplesPage />}
         />
         <Route path="about-us" element={<AboutUs />} />

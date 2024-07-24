@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import Lottie from "lottie-react";
-import serviceAnimation from "../../assets/service.json";
+import serviceAnimation from "../../assets/our_services3.json";
+import LoadingPage from "../../pages/loadingPage/LoadingPage";
 
 const OurServices = () => {
   const { t, i18n } = useTranslation();
@@ -25,7 +26,7 @@ const OurServices = () => {
     }));
   };
   const { data: categories, isLoading, isError } = useGetCategoriesQuery();
-  if (isLoading) return <div></div>;
+  if (isLoading) return <LoadingPage />;
   if (isError) return <div></div>;
   return (
     <div className="w-full bg-gray-100 py-8">
@@ -52,7 +53,7 @@ const OurServices = () => {
           {t("services_desc")}
         </p>
       </div>
-      <div className="bg-slate-200">
+      <div className="">
         <Lottie
           animationData={serviceAnimation}
           className="w-full h-[300px] md:h-[400px] mb-12"
@@ -71,7 +72,7 @@ const OurServices = () => {
                 key={index}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative max-w-md rounded h-auto pb-6 bg-transparent border-2 border-secondary hover:border-primary shadow-lg  mx-4 mb-8 md:mb-8 hover:shadow-xl transform transition duration-300 hover:-translate-y-1 cursor-pointer"
+                className="relative max-w-md rounded h-auto pb-6 bg-transparent border-2 border-primary hover:border-secondary shadow-lg  mx-4 mb-8 md:mb-8 hover:shadow-xl transform transition duration-300 hover:-translate-y-1 cursor-pointer"
               >
                 <div>
                   <div className="flex flex-col items-center justify-start p-3 h-full w-full">
@@ -105,7 +106,7 @@ const OurServices = () => {
                 </div>
                 <Link
                   to={`pricing/${category._id}`}
-                  className="absolute bottom-0 left-0 translate-y-4 translate-x-1/2 w-1/2 bg-primary text-white font-header text-center py-2 rounded-lg border border-white shadow-lg hover:bg-secondary hover:border-secondary hover:shadow-xl"
+                  className="absolute bottom-0 left-0 translate-y-4 translate-x-1/2 w-1/2 bg-primary text-secondary font-mono text-center py-2 rounded-lg border border-secondary shadow-lg hover:text-primary hover:bg-secondary hover:border-secondary hover:shadow-xl"
                 >
                   {t("discover_packages")}
                 </Link>

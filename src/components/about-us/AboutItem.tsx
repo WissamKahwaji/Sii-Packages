@@ -8,6 +8,8 @@ export type AboutProps = {
   ourVision_ar: string;
   ourMission_ar: string;
   ourValues_ar: string;
+  ourGoals: string;
+  ourGoals_ar: string;
 };
 
 const AboutItem = (props: AboutProps) => {
@@ -27,12 +29,12 @@ const AboutItem = (props: AboutProps) => {
     setShowFullBriefValues(!showFullBriefValues);
   };
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-3 mx-auto  w-full md:w-3/4">
-      <div className="lg:border-r-2 border-primary flex flex-col py-6 md:px-7 justify-start items-center   transition duration-300 ease-in-out transform hover:-translate-y-1">
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-4 mx-auto  w-full md:w-[90%]">
+      <div className="lg:border-r-2 border-primary flex flex-col py-6 md:px-4 justify-start items-center   transition duration-300 ease-in-out transform hover:-translate-y-1">
         <p className="text-secondary font-bold font-header text-lg mb-5">
           {t("our_vision")}
         </p>
-        <div className="text-gray-900 font-body text-lg text-start mx-2 md:mx-0">
+        <div className="text-gray-900 font-body text-lg text-start mx-auto px-5 md:px-0 md:mx-0">
           {selectedLang == "en"
             ? showFullBriefVision
               ? props.ourVision
@@ -50,11 +52,11 @@ const AboutItem = (props: AboutProps) => {
           )}
         </div>
       </div>
-      <div className="lg:border-r-2 border-primary flex flex-col py-6 md:px-7 justify-start items-center   transition duration-300 ease-in-out transform hover:-translate-y-1">
+      <div className="lg:border-r-2 border-primary flex flex-col py-6 md:px-4 justify-start items-center   transition duration-300 ease-in-out transform hover:-translate-y-1">
         <p className="text-secondary font-bold font-header text-lg mb-5">
           {t("our_mission")}
         </p>
-        <div className="text-gray-900 font-body text-lg text-start mx-2 md:mx-0">
+        <div className="text-gray-900 font-body text-lg text-start mx-auto px-5 md:px-0 md:mx-0">
           {selectedLang == "en"
             ? showFullBriefMission
               ? props.ourMission
@@ -72,11 +74,11 @@ const AboutItem = (props: AboutProps) => {
           )}
         </div>
       </div>
-      <div className="lg:border-r-2 border-primary flex flex-col py-6 md:px-7 justify-start items-center   transition duration-300 ease-in-out transform hover:-translate-y-1">
+      <div className="lg:border-r-2 border-primary flex flex-col py-6 md:px-4 justify-start items-center   transition duration-300 ease-in-out transform hover:-translate-y-1">
         <p className="text-secondary font-bold font-header text-lg mb-5">
           {t("our_values")}
         </p>
-        <div className="text-gray-900 font-body text-lg text-start mx-2 md:mx-0">
+        <div className="text-gray-900 font-body text-lg text-start mx-auto px-5 md:px-0 md:mx-0">
           {selectedLang == "en"
             ? showFullBriefValues
               ? props.ourValues
@@ -89,6 +91,29 @@ const AboutItem = (props: AboutProps) => {
               className="cursor-pointer text-primary"
               onClick={toggleBriefValues}
             >
+              {showFullBriefValues ? t("show_less") : t("show_more")}
+            </span>
+          )}
+        </div>
+      </div>
+      <div className="lg:border-r-2 border-primary flex flex-col py-6 md:px-4 justify-start items-center   transition duration-300 ease-in-out transform hover:-translate-y-1">
+        <p className="text-secondary font-bold font-header text-lg mb-5">
+          {t("our_goals")}
+        </p>
+        <div className="text-gray-900 font-body text-lg text-start mx-auto px-5 md:px-0 md:mx-0">
+          {selectedLang == "en"
+            ? showFullBriefValues
+              ? props.ourGoals
+              : props.ourGoals.slice(0, 100)
+            : showFullBriefValues
+            ? props.ourGoals_ar
+            : props.ourGoals_ar.slice(0, 100)}
+          {props.ourGoals && props.ourGoals.length > 100 && (
+            <span
+              className="cursor-pointer text-primary"
+              onClick={toggleBriefValues}
+            >
+              {" "}
               {showFullBriefValues ? t("show_less") : t("show_more")}
             </span>
           )}

@@ -88,7 +88,7 @@ const ContactSection = () => {
   };
 
   return (
-    <div className="py-1 md:p-16 w-full bg-secondary/20">
+    <div className="py-1 md:p-16 w-full bg-slate-50">
       <div className="w-[98%] m-auto max-w-[1400px]">
         <div className="grid grid-cols-1 pb-8 text-center pt-4">
           <h3 className="mb-4 md:text-2xl text-xl font-bold font-header text-primary capitalize">
@@ -117,7 +117,7 @@ const ContactSection = () => {
                     onChange={handleChange}
                     placeholder={t("first_name")}
                     required
-                    className="w-full p-2 border border-gray-600 rounded h-10 outline-none bg-transparent focus:border-primary text-[15px]"
+                    className="w-full p-2 border border-primary rounded h-10 outline-none bg-transparent focus:border-primary text-[15px]"
                   />
                 </div>
                 <div className="col-span-6 mb-5">
@@ -129,7 +129,7 @@ const ContactSection = () => {
                     onChange={handleChange}
                     placeholder={t("last_name")}
                     required
-                    className="w-full p-2 border border-gray-600 rounded h-10 outline-none bg-transparent focus:border-primary text-[15px]"
+                    className="w-full p-2 border border-primary rounded h-10 outline-none bg-transparent focus:border-primary text-[15px]"
                   />
                 </div>
               </div>
@@ -142,7 +142,7 @@ const ContactSection = () => {
                   value={formData.companyName}
                   onChange={handleChange}
                   placeholder={t("company_name")}
-                  className="w-full p-2 border border-gray-600 rounded h-10 outline-none bg-transparent focus:border-primary text-[15px]"
+                  className="w-full p-2 border border-primary rounded h-10 outline-none bg-transparent focus:border-primary text-[15px]"
                 />
               </div>
               <div className="lg:col-span-6 mb-5">
@@ -154,7 +154,7 @@ const ContactSection = () => {
                   onChange={handleChange}
                   placeholder={t("your_email")}
                   required
-                  className="w-full p-2 border border-gray-600 rounded h-10 outline-none bg-transparent focus:border-primary text-[15px]"
+                  className="w-full p-2 border border-primary rounded h-10 outline-none bg-transparent focus:border-primary text-[15px]"
                 />
               </div>
               <div className="lg:col-span-6 mb-5">
@@ -163,11 +163,11 @@ const ContactSection = () => {
                   country={"ae"}
                   value={formData.mobile}
                   onChange={handlePhoneChange}
-                  inputProps={{ required: true, autoFocus: true }}
+                  inputProps={{ required: true, autoFocus: false }}
                   placeholder={t("your_mobile_number")}
                   inputStyle={{
                     width: "100%",
-                    border: "1px solid #4B5563",
+                    border: "1px solid #FFCF57",
                     borderRadius: "0.375rem",
                     fontSize: "15px",
                     outline: "none",
@@ -190,14 +190,14 @@ const ContactSection = () => {
                   id="message"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full p-2 border border-gray-600 rounded h-28 outline-primary bg-transparent focus:border-primary text-[15px]"
+                  className="w-full p-2 border border-primary rounded h-28 outline-primary bg-transparent focus:border-primary text-[15px]"
                   placeholder={t("your_message")}
                   required
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className="bg-secondary w-full text-white py-3 px-5 rounded-md hover:bg-primary transition-colors duration-300"
+                className="bg-primary w-full text-secondary py-3 px-5 rounded-md hover:bg-primary transition-colors duration-300"
               >
                 {t("send_message")}
               </button>

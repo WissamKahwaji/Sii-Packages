@@ -12,13 +12,14 @@ import { FaAppStoreIos, FaGooglePlay } from "react-icons/fa";
 import ReactPlayer from "react-player";
 import { useEffect, useState } from "react";
 import ReactGA from "react-ga4";
+import LoadingPage from "../loadingPage/LoadingPage";
 
 const SamplesPage = () => {
   useEffect(() => {
     ReactGA.send({
       hitType: "pageview",
-      page: "/packages/pricing/:categoryId/samples/:id",
-      title: "Samples Page",
+      page: "/services/pricing/:categoryId/samples/:id",
+      title: "Services Page",
     });
   }, []);
 
@@ -78,7 +79,7 @@ const SamplesPage = () => {
     category?.subcategories &&
     category.subcategories.find(c => c._id?.toString() === id);
 
-  if (isLoading) return <div></div>;
+  if (isLoading) return <LoadingPage />;
   if (isError) return <div></div>;
 
   return (

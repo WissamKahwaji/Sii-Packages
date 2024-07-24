@@ -39,7 +39,7 @@ const LanguageButton = () => {
   return (
     <div className="relative flex flex-col items-center  rounded-lg">
       <button
-        className="bg-secondary text-xs md:text-sm text-white capitalize px-4 py-2 md:px-3 md:py-1  w-full h-full flex items-center justify-between font-serif  rounded-lg tracking-wider border-transparent active:border-white duration-300 active:text-white"
+        className="bg-secondary text-xs md:text-sm text-white capitalize px-4 py-2 md:px-3 md:py-1  w-full h-full flex items-center justify-between font-serif  rounded-lg tracking-wider border border-primary active:border-white duration-300 active:text-white"
         onClick={() => setIsOpen(prev => !prev)}
       >
         {lang}
@@ -50,7 +50,7 @@ const LanguageButton = () => {
         )}
       </button>
       {isOpen && (
-        <div className="bg-secondary absolute text-white w-full top-9 md:top-8 rounded-lg flex flex-col items-center  p-1  ">
+        <div className="bg-primary absolute text-secondary w-full top-9 md:top-8 rounded-lg flex flex-col items-center  p-1  ">
           {langList.map((lang, index) => (
             <div
               key={index}

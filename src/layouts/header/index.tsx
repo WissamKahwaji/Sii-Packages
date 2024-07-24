@@ -1,4 +1,4 @@
-import logo_black from "../../assets/logo_black.png";
+import logo_black from "../../assets/logo_sii_new_2.png";
 import { Link, useLocation } from "react-router-dom";
 import LanguageButton from "../../components/ui/LanguageButton";
 import {
@@ -57,7 +57,7 @@ const Navbar = () => {
   ];
 
   const navItems = [
-    { title: "packages", path: "/packages" },
+    { title: "our_services", path: "/services" },
     { title: "our_projects", path: "/our-projects" },
     { title: "about_us", path: "/about-us" },
     { title: "our_clients", path: "/our-clients" },
@@ -92,7 +92,7 @@ const Navbar = () => {
         </div>
         {showDrawer && (
           <div className="md:hidden fixed inset-0 bg-transparent bg-opacity-90 flex flex-row w-full backdrop-filter backdrop-blur-sm">
-            <div className=" bg-primary bg-opacity-80 z-[1002] transition  duration-300 transform translate-x-0 w-[75%]">
+            <div className=" bg-secondary bg-opacity-80 z-[1002] transition  duration-300 transform translate-x-0 w-[75%]">
               <div className="flex flex-col items-start mx-2 space-y-4 py-8">
                 <div className="mb-5">
                   <LanguageButton />
@@ -101,7 +101,7 @@ const Navbar = () => {
                   <a
                     key={index}
                     href={item.path}
-                    className="text-white hover:text-hoverColor transition duration-300 text-lg border-b-2 w-full border-b-hoverColor/50"
+                    className="text-white hover:text-hoverColor transition duration-300 text-lg border-b-2 w-full border-b-primary/50"
                   >
                     {t(`${item.title}`)}
                   </a>
@@ -113,7 +113,7 @@ const Navbar = () => {
                       window.location.href = `mailto:info@siimedia.net`;
                     }}
                   >
-                    <FaEnvelope />
+                    <FaEnvelope className="text-primary" />
                     <span className="mx-2 text-lg">info@siimedia.net</span>
                   </div>
                   <div
@@ -122,7 +122,7 @@ const Navbar = () => {
                       window.location.href = `tel:+971545615757`;
                     }}
                   >
-                    <FaPhoneAlt />
+                    <FaPhoneAlt className="text-primary" />
                     <span style={{ direction: "ltr" }} className="mx-2 text-lg">
                       +971 54 561 5757
                     </span>
@@ -133,7 +133,7 @@ const Navbar = () => {
                         <Link
                           key={index}
                           to={socialMedia.link ?? ""}
-                          className="flex items-center text-white hover:text-hoverColor transition duration-300"
+                          className="flex items-center text-primary hover:text-background transition duration-300"
                         >
                           {socialMedia.icon}
                         </Link>
@@ -144,7 +144,7 @@ const Navbar = () => {
                         <Link
                           key={index}
                           to={socialMedia.link ?? ""}
-                          className="flex items-center text-white hover:text-hoverColor transition duration-300"
+                          className="flex items-center text-primary hover:text-hoverColor transition duration-300"
                         >
                           {socialMedia.icon}
                         </Link>
@@ -159,7 +159,7 @@ const Navbar = () => {
                 onClick={toggleDrawer}
                 className="text-white text-lg focus:outline-none"
               >
-                <AiOutlineCloseSquare className="text-6xl text-secondary" />
+                <AiOutlineCloseSquare className="text-6xl text-primary" />
               </button>
             </div>
           </div>
@@ -171,7 +171,7 @@ const Navbar = () => {
                 <Link
                   key={index}
                   to={socialMedia.link ?? ""}
-                  className="flex items-center mx-1 text-secondary hover:text-primary transition duration-300"
+                  className="flex items-center mx-1 text-background hover:text-primary transition duration-300"
                 >
                   {socialMedia.icon}
                 </Link>
@@ -184,9 +184,9 @@ const Navbar = () => {
               <div key={index}>
                 <Link to={item.path}>
                   <p
-                    className={`capitalize font-header mx-2 text-xs md:text-base text-primary hover:text-secondary font-semibold transition duration-300 ${
+                    className={`capitalize font-header mx-2 text-xs md:text-base text-primary hover:text-background font-semibold transition duration-300 ${
                       item.path === currentPath
-                        ? "border-b-2 border-secondary"
+                        ? "border-b-2 border-background"
                         : ""
                     }`}
                   >

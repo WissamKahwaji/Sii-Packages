@@ -8,9 +8,10 @@
 
 @layer base {
   :root {
-    --primary: 329 85% 27%;
-    --secondary: 194 71% 30%;
+    --primary: 43 100% 67%;
+    --secondPrimary: 43 94% 62%;
+    --secondary: 240 100% 0%;
     --background: 233 15% 89%;
-    --seconBackground: 0 0% 94%;
+    --seconBackground: 240 100% 0%;
   }
 }

@@ -77,9 +77,9 @@ const PackageCard: React.FC<PackageCardProps> = ({
         )}
         <button
           onClick={setShowModal}
-          className="mt-6 w-full border-secondary bg-slate-100 border border-gray-300   p-6 hover:border-primary hover:bg-gray-200 transition-colors duration-300"
+          className="mt-6 w-full border-secondary bg-gray-50 border border-gray-300   p-6 hover:border-primary hover:bg-secondary transition-colors duration-300"
         >
-          <p className="text-xl font-semibold text-primary">
+          <p className="text-xl font-semibold   text-secondPrimary">
             {t("choose_the_package")}
           </p>
         </button>
@@ -97,7 +97,7 @@ const PackageCard: React.FC<PackageCardProps> = ({
                       fill="currentColor"
                       height="1em"
                       width="1em"
-                      className="shrink-0 h-5 w-5 fill-current text-green-500"
+                      className="shrink-0 h-5 w-5 fill-current text-primary"
                     >
                       <path d="M248 850c-22.667 0-41.333-9.333-56-28L12 586C1.333 570-2.667 552.667 0 534s11.333-34 26-46 31.667-16.667 51-14c19.333 2.667 35 12 47 28l118 154 296-474c10.667-16 25-26 43-30s35.667-1.333 53 8c16 10.667 26 25 30 43s1.333 35.667-8 53L306 816c-13.333 21.333-32 32-56 32l-2 2" />
                     </svg>

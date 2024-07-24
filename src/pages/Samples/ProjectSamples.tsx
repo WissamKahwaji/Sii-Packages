@@ -11,6 +11,7 @@ import "react-multi-carousel/lib/styles.css";
 import { FaAppStoreIos, FaGooglePlay } from "react-icons/fa";
 import ReactGA from "react-ga4";
 import { useEffect } from "react";
+import LoadingPage from "../loadingPage/LoadingPage";
 
 const ProjectSamples = () => {
   useEffect(() => {
@@ -61,7 +62,7 @@ const ProjectSamples = () => {
   //   category?.subcategories &&
   //   category.subcategories.find(c => c._id?.toString() === id);
 
-  if (isLoading) return <div></div>;
+  if (isLoading) return <LoadingPage />;
   if (isError) return <div></div>;
 
   return (
@@ -149,7 +150,7 @@ const ProjectSamples = () => {
                             )} */}
                           <div className="flex flex-row items-start justify-between mx-3 md:mx-40 mt-3 mb-2">
                             <div
-                              className="flex flex-row   items-center space-x-2 md:space-x-3 cursor-pointer bg-gray-200 rounded-md p-2 hover:bg-gray-300 border border-gray-300 shadow-md"
+                              className="flex flex-row   items-center space-x-2 md:space-x-3 cursor-pointer bg-primary rounded-md p-2 hover:bg-gray-300 border border-gray-300 shadow-md"
                               onClick={() => {
                                 if (item.link) {
                                   window.open(item.link, "_blank");
@@ -162,7 +163,7 @@ const ProjectSamples = () => {
                               </span>
                             </div>
                             <div
-                              className="flex flex-row   items-center space-x-2 md:space-x-3 cursor-pointer bg-gray-200 rounded-md py-2 px-5 md:py-2 md:px-5 hover:bg-gray-300 border border-gray-300 shadow-md"
+                              className="flex flex-row   items-center space-x-2 md:space-x-3 cursor-pointer bg-primary rounded-md py-2 px-5 md:py-2 md:px-5 hover:bg-gray-300 border border-gray-300 shadow-md"
                               onClick={() => {
                                 if (item.secondLink) {
                                   window.open(item.secondLink, "_blank");

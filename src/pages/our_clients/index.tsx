@@ -4,6 +4,7 @@ import { useGetClientsQuery } from "../../apis/our_clients/queries";
 import { ClientsModel } from "../../apis/our_clients/type";
 import ReactGA from "react-ga4";
 import { useEffect } from "react";
+import LoadingPage from "../loadingPage/LoadingPage";
 const OurClients = () => {
   const { t, i18n } = useTranslation();
   const selectedLang = i18n.language;
@@ -15,7 +16,7 @@ const OurClients = () => {
       title: "our-clients Page",
     });
   }, []);
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingPage />;
   if (isError || !clientsData) return <div>Error...</div>;
 
   return (
@@ -49,7 +50,7 @@ const OurClients = () => {
               // boxShadow: "0px 10px 15px rgba(0, 0, 0, 0.1)",
             }}
           >
-            <div className="h-32 md:h-44 w-full p-3 rounded-lg hover:shadow-xl transition duration-300 transform hover:scale-105 border  hover:border-primary mb-2">
+            <div className="h-32 md:h-44 w-full p-3 rounded-lg hover:shadow-xl transition duration-300 transform hover:scale-105 border border-primary  hover:border-secondary mb-2">
               <img
                 src={client.logo}
                 alt={client.name}

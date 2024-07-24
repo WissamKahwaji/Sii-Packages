@@ -1,11 +1,11 @@
-import logo from "../../assets/sii_logo.svg";
+import logo from "../../assets/logo_sii_new_2.png";
 const LoadingPage = () => {
   return (
-    <div className=" absolute left-0 top-0 z-30 flex h-screen w-screen items-center justify-center">
-      <div className="h-20 w-20 animate-pulse sm:h-20 sm:w-20 md:h-40 md:w-40">
+    <div className="  h-screen  items-center justify-center">
+      <div className="h-full w-full animate-pulse sm:h-full sm:w-full md:h-full md:w-full flex justify-center items-center">
         <img
           src={logo}
-          className="aspect-square h-full w-full object-cover"
+          className="aspect-square h-1/2 w-1/2 object-contain"
           alt="logo"
         />
       </div>

@@ -12,7 +12,7 @@ import {
 import { BsTwitterX } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
-import logo_black from "../../assets/logo_black.png";
+import logo_black from "../../assets/logo_sii_new_2.png";
 import { MdOutlineFacebook, MdOutlineWhatsapp } from "react-icons/md";
 import { useGetCategoriesQuery } from "../../apis/packages/queries";
 import { FaSnapchat } from "react-icons/fa";
@@ -91,7 +91,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-background text-secondary px-2 pt-12 pb-2 border-t border-primary">
+    <footer className="bg-neutral-800 text-secondary px-2 pt-12 pb-2 border-t-2 border-primary">
       <div className="container mx-auto flex flex-wrap justify-between items-start w-full md:px-20">
         <div className="w-full  sm:w-auto mb-8 sm:mb-0 flex justify-start flex-col items-start">
           <div className="w-full sm:w-auto sm:mb-0 mb-5 md:mb-7">
@@ -103,7 +103,7 @@ const Footer: React.FC = () => {
           </div>
           <div className="flex items-center mb-4">
             <FiMapPin className="mx-2 text-primary" />
-            <span className="text-gray-700">
+            <span className="text-white w-60">
               {t("United Arab Emirates - Dubai")}
             </span>
           </div>
@@ -114,7 +114,7 @@ const Footer: React.FC = () => {
             }}
           >
             <FiLink className="mx-2 text-primary " />
-            <span className="text-gray-700">www.siimedia.net</span>
+            <span className="text-white">www.siimedia.net</span>
           </div>
           <div
             className="flex items-center mb-4 cursor-pointer"
@@ -123,7 +123,7 @@ const Footer: React.FC = () => {
             }}
           >
             <FiMail className="mx-2 text-primary " />
-            <span className="text-gray-700">info@siimedia.net</span>
+            <span className="text-white">info@siimedia.net</span>
           </div>
           <div
             className="flex items-center mb-4 cursor-pointer"
@@ -132,7 +132,7 @@ const Footer: React.FC = () => {
             }}
           >
             <FiPhone className="mx-2 text-primary" />
-            <span style={{ direction: "ltr" }} className="text-gray-700">
+            <span style={{ direction: "ltr" }} className="text-white">
               +971 54 561 5757
             </span>
           </div>
@@ -143,7 +143,7 @@ const Footer: React.FC = () => {
             }}
           >
             <FiPhone className="mx-2 text-primary" />
-            <span style={{ direction: "ltr" }} className="text-gray-700 ">
+            <span style={{ direction: "ltr" }} className="text-white ">
               +971 54 299 8757
             </span>
           </div>
@@ -174,14 +174,14 @@ const Footer: React.FC = () => {
         </div>
         <div className="mb-8">
           <h4 className="pb-3 text-xl text-primary font-semibold">
-            {t("packages")}
+            {t("our_services")}
           </h4>
           <ul>
             {categories?.map((category, index) => (
               <li key={index} className="pb-3">
                 <Link
                   to={`pricing/${category._id}`}
-                  className="hover:text-primary"
+                  className="hover:text-primary text-slate-200"
                 >
                   {selectedLang === "en" ? category.name_en : category.name_ar}
                 </Link>
@@ -195,33 +195,48 @@ const Footer: React.FC = () => {
           </h4>
           <ul>
             <li className="pb-3">
-              <Link to="/packages" className="hover:text-primary">
-                {t("packages")}
+              <Link
+                to="/services"
+                className="hover:text-primary text-slate-200"
+              >
+                {t("our_services")}
               </Link>
             </li>
             <li className="pb-3">
-              <Link to="/our-projects" className="hover:text-primary">
+              <Link
+                to="/our-projects"
+                className="hover:text-primary text-slate-200"
+              >
                 {t("our_projects")}
               </Link>
             </li>
             <li className="pb-3">
-              <Link to="/about-us" className="hover:text-primary">
+              <Link
+                to="/about-us"
+                className="hover:text-primary text-slate-200"
+              >
                 {t("about_us")}
               </Link>
             </li>
             <li className="pb-3">
-              <Link to="/our-clients" className="hover:text-primary capitalize">
+              <Link
+                to="/our-clients"
+                className="hover:text-primary capitalize text-slate-200"
+              >
                 {t("our_clients")}
               </Link>
             </li>
             <li className="pb-3">
-              <Link to="/contact-us" className="hover:text-primary capitalize">
+              <Link
+                to="/contact-us"
+                className="hover:text-primary capitalize text-slate-200"
+              >
                 contact us
               </Link>
             </li>
           </ul>
         </div>
-        <div className="md:max-w-md max-w-max  ">
+        <div className="md:max-w-md max-w-max  mx-auto md:mx-0  ">
           <form onSubmit={handleSubmit}>
             <input
               type="email"
@@ -231,7 +246,7 @@ const Footer: React.FC = () => {
               onChange={handleChange}
               placeholder={t("your_email")}
               required
-              className="w-full mb-4 p-3 rounded-lg border border-gray-400 bg-gray-200 text-gray-800 focus:outline-none focus:border-primary"
+              className="w-full mb-2 p-3 rounded-lg border-2 border-primary bg-gray-100 text-gray-800 focus:outline-none focus:border-primary"
             />
             {/* <input
               type="text"
@@ -243,16 +258,16 @@ const Footer: React.FC = () => {
               required
               className="w-full mb-4 p-3 rounded-lg border border-gray-400 bg-gray-200 text-gray-800 focus:outline-none focus:border-primary"
             /> */}
-            <div className="mb-4">
+            <div className="mb-2">
               <PhoneInput
                 country={"ae"}
                 value={formData.mobile}
                 onChange={handlePhoneChange}
-                inputProps={{ required: true, autoFocus: true }}
+                inputProps={{ required: true, autoFocus: false }}
                 placeholder={t("your_mobile_number")}
                 containerStyle={{ direction: "ltr" }}
                 inputStyle={{
-                  border: "1px solid #9CA3AF",
+                  border: "2px solid #FFCF57",
                   borderRadius: "0.375rem",
                   fontSize: "15px",
                   outline: "none",
@@ -276,11 +291,11 @@ const Footer: React.FC = () => {
               value={formData.message}
               onChange={handleChange}
               required
-              className="w-full h-24 p-3 rounded-lg border border-gray-400 bg-gray-200 text-gray-800 focus:outline-none focus:border-primary"
+              className="w-full h-24 p-3 mb-2 rounded-lg border-2 border-primary bg-gray-200 text-gray-800 focus:outline-none focus:border-primary"
             ></textarea>
             <button
               type="submit"
-              className="bg-primary text-white py-3 px-6 rounded-lg hover:bg-secondary transition-colors duration-300"
+              className="bg-primary text-secondary w-full py-3 px-6 rounded-lg hover:bg-secondary transition-colors duration-300"
             >
               {t("send")}
             </button>

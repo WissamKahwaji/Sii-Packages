@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/sii_logo.svg";
+import logo from "../../assets/logo_sii_new_2.png";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -36,7 +36,7 @@ const BioSection: React.FC<BioSectionProps> = ({ scrollToContact }) => {
           <h2 className="text-secondary text-2xl font-bold font-header drop-shadow-lg capitalize">
             {t("welcom_to")}
           </h2>
-          <h1 className="capitalize text-primary font-semibold font-header text-4xl drop-shadow-lg mb-3 ">
+          <h1 className="capitalize text-primary font-semibold font-header text-4xl drop-shadow-sm mb-3 ">
             Sii advertising & media
           </h1>
           <p className="text-secondary font-body text-start text-sm md:text-base mx-1 md:mx-0">
@@ -45,13 +45,13 @@ const BioSection: React.FC<BioSectionProps> = ({ scrollToContact }) => {
           <div className="flex gap-4 lg:gap-4 mt-6 justify-center md:justify-start">
             <Link
               to={`/our-projects`}
-              className="uppercase duration-500 hover:bg-secondary/80 py-3 px-6 rounded text-white shadow-lg drop-shadow bg-primary transform  animate-pulse"
+              className="uppercase duration-500 hover:bg-secondary/80 py-3 px-6 rounded text-secondary shadow-lg drop-shadow bg-primary transform  animate-pulse"
             >
               {t("our_projects")}
             </Link>
             <a
               href="/"
-              className="uppercase duration-500 hover:bg-secondary/80 py-3 px-6 rounded text-white shadow-lg drop-shadow bg-primary  transform  animate-pulse"
+              className="uppercase duration-500 hover:bg-secondary/80 py-3 px-6 rounded text-secondary shadow-lg drop-shadow bg-primary  transform  animate-pulse"
               onClick={e => {
                 e.preventDefault();
                 scrollToContact(e);
@@ -65,7 +65,7 @@ const BioSection: React.FC<BioSectionProps> = ({ scrollToContact }) => {
           <img
             src={logo}
             alt="logo"
-            className="w-full lg:h-[550px] h-[450px] object-cover "
+            className="w-full lg:h-[550px] h-[450px] object-contain "
           />
         </div>
       </motion.div>

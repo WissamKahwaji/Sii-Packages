@@ -26,6 +26,7 @@ export type Category = {
   bio_en?: string;
   bio_ar?: string;
   landingLing?: string;
+  serviceImage?: string;
 };
 
 export type Feature = {
