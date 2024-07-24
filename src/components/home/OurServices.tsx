@@ -49,7 +49,7 @@ const OurServices = () => {
             )}
           </>
         </div>
-        <p className="hidden md:flex  text-secondary font-body leading-7 max-w-[700px]   text-start  text-sm md:text-lg mx-5 md:mx-auto">
+        <p className=" md:flex  text-secondary font-body leading-7 max-w-[700px]   text-start  text-sm md:text-lg mx-5 md:mx-auto">
           {t("services_desc")}
         </p>
       </div>
